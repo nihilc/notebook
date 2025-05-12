@@ -8,7 +8,9 @@
 #let box_yellow(content) = box([#content], stroke: yellow, outset: 3pt)
 #let box_gray(content) = box([#content], stroke: gray, outset: 3pt)
 
-= Demostraciones Directas
+= Desarrollo Taller
+
+== Demostraciones Directas
 
 #enum(enum.item[
   Demuestre por método directo
@@ -140,7 +142,7 @@
 
 
 #pagebreak()
-= Demostraciones por Contra-Reciproca
+== Demostraciones por Contra-Reciproca
 
 #enum(
   enum.item[
@@ -301,7 +303,7 @@
         ]
         Supongamos $x>=0$ por lo tanto $x in PP or x=0$, analizamos los casos:
         - Caso $x>0$ \
-          Como $x in PP$ entonces $x^2 in PP$ y $5x in PP$ también $x^2 + 5x$ \
+          Como $x in PP$ entonces $x^2 in PP$ y $5x in PP$ también $x^2 + 5x in PP$ \
           Por definición $x^2+ 5x> 0$ \
           $therefore x>0 ==> x^2+5x>=0$
         - Caso $x=0$
@@ -530,12 +532,9 @@
 
         #box_center[$p: root(3, 2) in II quad not p: root(3, 2) in QQ$]
 
-        #align(
-          right,
-          quote(
-            block: true,
-          )[$root(3, 2) in.not II <=> root(3, 2) in QQ$ Solamente si $root(3, 2) in RR$],
-        )
+        #align(right, quote(
+          block: true,
+        )[$(root(3, 2) in.not II <=> root(3, 2) in QQ) => root(3, 2) in RR$])
 
         Supongamos que $root(3, 2) in QQ$ \
         Por lo tanto existen $p,q in ZZ$ co-primos $op("mcd")(p,q)=1$, Tal que $root(3, 2)=p / q$ \
@@ -545,6 +544,17 @@
                    2 & = p^3 / q^3 \
                 2q^3 & = p^3       \
         $
+        Podemos ver que $p^3$ es par, por lo tanto es de la forma $p^3=2k$ con $k in ZZ$ \
+        Remplazando
+        $
+          2q^3 & = (2k)^3  \
+          2q^3 & = 8k^3    \
+           q^3 & = 4k^3    \
+           q^3 & = 2(2k^3) \
+        $
+        Podemos ver que $q^3$ también es par \
+        Pero esto contradice nuestra suposición donde $op("mcd")(p,q)=1$ \
+        $therefore root(3,2) in II$
       ],
 
       enum.item[
@@ -576,56 +586,67 @@
 
 #enum(
   enum.item[
-    Suponga $x,n in ZZ$. $x "es impar" <==> x^n "es impar"$ askdfj
+    Suponga $x,k in ZZ$. $x "es impar" <==> x^k "es impar"$
 
     *Demostración:*
 
     #list(
       list.item[
-        $p: x "impar" ==> q: x^n "impar"$ \
-        _Por inducción:_
+        $p: x "impar" ==> q: x^k "impar"$ \
 
-        Supongamos que $x$ es impar \
-
+        _Por inducción:_ \
         #list(
           list.item[
-            Base: $n=0$ \
-            Como $x$ es impar $x!=0$, $x^0=1$ que es impar
+            Base de inducción ($k=0$):
+
+            Sabemos que $x^0=1$ y $1$ es impar\
+            Por lo tanto la proposición es cierta para $k=0$
           ],
+
           list.item[
-            Paso Inductivo: $n>=0$ \
-            Supongamos que $x^k$ es impar para $k in ZZ$ y $k>=0$ (hipótesis inductiva) \
-            Como $x$ es impar, es de la forma $x=2m+1$ con $m in ZZ$
-            Entonces
+            Hipótesis de inducción (para $k=n$):
+
+            Supongamos que $x^n$ es impar, para $n in ZZ$ y $n>=0$
+          ],
+
+          list.item[
+            Paso inductivo (demostrar para $k=n+1$): \
+
+            Queremos probar que $x^(n+1)$ es impar \
+            Sabemos que $x^(n+1)=x^n x$ \
+            Por hipótesis de inducción $x^n$ es impar, y por hipótesis $x$ es impar \
+            Por lo tanto son de la forma $x^n=2a+1$ y $x=2b+1$ con $a,b in ZZ$ \
+            Ahora
             $
-            x^(k+1)=x^k x
+              x^n x & = (2a+1)(2b+1)        \
+                    & = 4a b + 2a + 2b + 1  \
+                    & = 2(2a b + a + b) + 1 \
             $
+            Sea $c=2a b+a+b$, como $a,b in ZZ$ entonces $c in ZZ$ \
+            Por lo tanto $x^(n+1)=2c+1$ es impar \
+            $therefore$ Por inducción matemática $x^k$ es impar para todo $k>=0$
           ],
         )
 
-
-        $therefore x "impar" ==> x^n "impar"$
+        $therefore x "impar" ==> x^k "impar"$
       ],
 
       list.item[
-        $q: x^n "impar" ==> p: x "impar"$ \
-        _Por contra-reciproca:_
-        $ not p: x "par" ==> not q: x^n "par" $
-        Supongamos que $x$ es par,\
-        Por lo tanto es de la forma $x=2k$ con $k in ZZ$ \
-        Remplazando $x^n=(2k)^n = 2^n k^n$ \
-        Vemos que uno de los factores de $x^n$ siempre es una potencia de $2$ \
-        Por lo tanto $x^n$ siempre es par
+        $q: x^k "impar" ==> p: x "impar"$
 
-        $therefore x^n "impar" ==> x "impar"$
+        _Por contra-reciproca:_
+        $ not p: x "par" ==> not q: x^k "par" $
+        Supongamos que $x$ es par,\
+        Por lo tanto es de la forma $x=2n$ con $n in ZZ$ \
+        Remplazando $x^k=(2n)^k = 2^k n^k$ \
+        Vemos que uno de los factores de $x^k$ siempre es una potencia de $2$ \
+        Por lo tanto $x^k$ siempre es par
+
+        $therefore x^k "impar" ==> x "impar"$
       ],
     )
 
 
-  ],
-
-  enum.item[
-    a
   ],
 )
 
