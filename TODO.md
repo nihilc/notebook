@@ -11,8 +11,11 @@
   - [ ] Completar Tablas de verdad en [Listas Tautologías](./cursos/s1/FM/06-lista_tautologias/lista_tautologias.typ)
   - [ ] Investigar temas faltantes en [Conjuntos](./cursos/s1/FM/07-conjuntos/conjuntos.typ)
 
-# Talleres
+# Talleres/Ejercicios
 
 - Fundamentos Matemáticas
   - [ ] Desarrollar talleres 01,02,03,05
   - [ ] Terminar taller 04
+- Introducción Calculo
+  - [ ] Agregar ejemplos a [numeros racionales](./cursos/s1/IC/02-numeros_racionales/numeros_racionales.typ)
+  - [ ] Desarrollar ejercicios [números irracionales](./cursos/s1/IC/03-numeros_irracionales/ejercicios.typ)
