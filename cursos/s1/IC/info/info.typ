@@ -1,4 +1,4 @@
-= Información
+= Introducción al Calculo
 
 == Profesor
 

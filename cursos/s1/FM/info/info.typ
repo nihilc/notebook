@@ -1,4 +1,4 @@
-= Información
+= Fundamentos de Matemáticas
 
 == Profesor
 
