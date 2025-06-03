@@ -178,4 +178,5 @@
   Foco: $display((59 / 8, -31 / 2) quad quad quad quad -41 / 8+25 / 2=(-41+100) / 8=59 / 8)$
 
   Directriz: $display(x=-141 / 8 quad quad quad -41 / 8-25 / 2=(-41-100) / 8=141 / 8)$
+  #finish
 ]

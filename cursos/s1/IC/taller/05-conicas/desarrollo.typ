@@ -1,4 +1,4 @@
-#set page(height: auto)
+// #set page(height: auto)
 #set enum(spacing: 8pt)
 #let finish = align(right, pad(bottom: 4pt, square(width: 8pt)))
 
@@ -65,3 +65,11 @@
 #pagebreak()
 
 #include "parabolas.typ"
+
+#pagebreak()
+
+#include "elipses.typ"
+
+#pagebreak()
+
+#include "hiperbolas.typ"
