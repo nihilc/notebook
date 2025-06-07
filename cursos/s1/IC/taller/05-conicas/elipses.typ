@@ -17,7 +17,7 @@
   ][
     Remplazamos el centro y los semiejes en la ecuación de elipse horizontal
     $
-         (x-h)^2 / a^2 + (y-k)^2 / b^2 & = 1 \
+         (x-h)^2 / b^2 + (y-k)^2 / a^2 & = 1 \
       (x-(-1))^2 / 3^2 + (y-4)^2 / 4^2 & = 1 \
             (x+1)^2 / 9 + (y-4)^2 / 16 & = 1 \
     $
