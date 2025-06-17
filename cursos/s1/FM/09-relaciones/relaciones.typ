@@ -23,3 +23,10 @@
 #quote(block: true)[
   _Relaciones de Orden_ son aquellas que cumplen con *reflexividad, antisimetría y transitividad*
 ]
+
+#pagebreak()
+= Contracción de números reales
+
+== $NN$
+
+
