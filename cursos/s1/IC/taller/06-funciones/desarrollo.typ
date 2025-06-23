@@ -301,13 +301,13 @@
   Dada la función $h(t)=|t^2-3|$ trace la gráfica de las funciones:
 
   #enum[
-    h_1(t)=h(t)-3
+    $h_1(t)=h(t)-3$
   ][
-    h_2(t)=h(t+5)
+    $h_2(t)=h(t+5)$
   ][
-    h_3(t)=h(t-2)+2
+    $h_3(t)=h(t-2)+2$
   ][
-    h_4(t)=-h(t)
+    $h_4(t)=-h(t)$
   ]
 ][
   // TODO:
@@ -315,7 +315,176 @@
 ][
   // TODO:
   Exprese el area del semicirculo en función del radio.
+
+  Area del semicirculo es $A_circle=(pi r^2) / 2$
+
+  Area del triangulo es $A_triangle=(5x) / 2$
+
+  Sabemos que
+  $
+             2r^2 & =x^2+5^2 \
+          2r^2-25 & =x^2     \
+    sqrt(2r^2-25) & =x       \
+  $
+
+  Para encontrar el area sombreada restamos $A_circle - A_triangle$
+  $
+    A(r) & = (pi r^2) / 2 - (5(sqrt(2r^2-25))) / 2 \
+         & = (pi r^2 - 5sqrt(2r^2-25)) / 2         \
+  $
 ][
   // TODO:
   Se desea cortar un alambre de $30$cm de longitud, en dos partes, con una se forma un cuadrado y con la otra una circunferencia, exprese el area del cuadrado y de el circulo en función del lado del cuadrado.
 ]
+
+#enum(
+  enum.item(21)[
+    Determine si las siguientes funciones son pares, impares o ninguna. Justifique:
+
+    #enum[
+      $f(x)=2x^2-5 / 3$
+
+      $
+        f(-x) & = 2(-x)^2 -5 / 3 \
+              & = 2x^2 -5 / 3    \
+              & = f(x)           \
+      $
+
+      $therefore f(x) "es par"$
+    ][
+      $g(x)=4x^3+sqrt(2)x$
+
+      $
+        g(-x) & = 4(-x)^3 + sqrt(2)(-x) \
+              & = -4x^3-sqrt(2)x        \
+              & = -(4x^3+sqrt(2)x)      \
+              & = -g(x)                 \
+      $
+
+      $therefore g(x) "es impar"$
+    ][
+      $f(t)=t^3 / (3t^2+1)$
+
+      $
+        f(-t) & = (-t)^3 / (3(-t)^2+1) \
+              & = (-t^3) / (3t^2+1)    \
+              & = -t^3 / (3t^2+1)      \
+              & = -f(t)                \
+      $
+
+      $therefore f(t) "es impar"$
+    ][
+      $y=(x^3+3x-5) / (x^2-3x+1)=f(x)$
+
+      $y = f(x)=g(x) / h(x)$
+
+      $
+        g(-x) & = (-x)^3+3(-x)-5 \
+              & = -x^3-3x-5      \
+              & = -(x^3+3x+5)    \
+      $
+
+      $g(x)$ no es par ni impar
+
+      $therefore y=f(x)$ tampoco es par ni impar
+    ][
+      $h(x)=sqrt(x^2-1)$
+
+      $
+        h(-x) & = sqrt((-x)^2-1) \
+              & = sqrt(x^2-1)    \
+              & = h(x)           \
+      $
+
+      $therefore h(x) "es par"$
+    ][
+      $y=(2x^2-1) / (x-2x^3)$
+
+      $y = f(x)=g(x) / h(x)$
+
+      $
+        g(-x) & = 2(-x)^2-1 \
+              & = 2x^2-1    \
+              & = g(x)      \
+      $
+
+      $
+        h(-x) & = (-x)-2(-x)^3 \
+              & = -x+2x^3      \
+              & = -(x-2x^3)    \
+              & = -h(x)        \
+      $
+
+      $
+        f(-x)=(g(-x)) / (h(-x)) = g(x) / (-h(x)) = -f(x)
+      $
+
+      $therefore y=f(x) "es impar"$
+
+    ]
+  ],
+  enum.item[
+    Dadas las funciones:
+
+    - $f(x)= x^2-1$
+    - $g(x)=sqrt(x^3+4)$
+    - $h(x)=(2x+1) / (x-2)$
+    - $p(x)=1 / (x^2-4)$
+    - $j(x)=x^4$
+    - $l(x)=sqrt(x)$
+
+    Halle
+
+    #enum[
+      $h(x)+p(x)$
+
+      $
+        h(x)+p(x) & = (2x+1) / (x-2) + 1 / (x^2-4)                      \
+                  & = ( (2x+1)(x^2-4) + (x-2)(1) ) / ( (x-2)(x^2-4) )   \
+                  & = ( 2x^3 -8x +x^2 -4 +x -2 ) / ( x^3 -4x -2x^2 +8 ) \
+                  & = ( 2x^3 +x^2 -7x -6 ) / ( x^3 -2x^2 -4x +8 )       \
+      $
+    ][
+      $1-g(x)^2$
+
+      $
+        1-g(x)^2 & = 1 -(sqrt(x^3+4))^2 \
+                 & = 1 -(x^3 +4)        \
+                 & = -3-x^3             \
+      $
+    ][
+      $h(x) compose l(x)$
+
+      $
+        h(x) compose l(x) & = h(l(x)) = h(sqrt(x))           \
+                          & = (2(sqrt(x))+1) / ((sqrt(x))-2) \
+                          & = (2sqrt(x)+1) / (sqrt(x)-2)     \
+      $
+    ][
+      $g(x)[l(x)+f(x)]$
+
+      $
+        g(x)[l(x)+f(x)] & = (sqrt(x^3+4))[(sqrt(x)) + (x^2-1)] \
+                        & = sqrt(x^3+4)[sqrt(x) +x^2-1]        \
+      $
+    ][
+      $[p(x) / h(x)] compose f(x)$
+
+      $
+        [p(x) / h(x)] compose f(x) & = [( 1 / (x^2-4) ) / ( (2x+1) / (x-2) )] compose f(x) \
+        &= [(x-2) / ( (x^2-4)(2x+1) )] compose f(x) \
+        &= ((x^2-1)-2) / ( ((x^2-1)^2-4)(2(x^2-1)+1) ) \
+        &= (x^2-1-2) / ( (x^4-2x^2+1-4) (2x^2-2+1) ) \
+        &= (x^2-3) / ( (x^4-2x^2-3) (2x^2-1) ) \
+        &= (x^2-3) / ( (x^2-3) (x^2+1) (2x^2-1) ) \
+      $
+    ][
+      $(l compose [ h compose g])_x$
+    ][
+      $[f(x)-g(x)] compose h(x)$
+    ]
+  ],
+)
+
+
+
