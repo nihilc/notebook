@@ -6,11 +6,11 @@
 #table(
   columns: 3,
   table.cell(colspan: 3)[Corte 1],
-  table.cell(colspan: 2)[Taller], [10%],
+  [Taller], [10%], [?],
   [Quiz], [5%], [11 Sep],
   [Parcial], [20%], [25 Sep],
   table.cell(colspan: 3)[Corte 2],
-  table.cell(colspan: 2)[Taller], [10%],
+  [Taller], [10%], [?],
   [Quiz], [5%], [16 Oct],
   [Parcial], [20%], [30 Oct],
   table.cell(colspan: 3)[Corte 3],
