@@ -60,7 +60,7 @@
       $8$, $9.99 gt 8$,
     ),
     box()[
-      #image("../images/figure1.svg", fit: "contain")
+      #image("../assets/figure1.svg", fit: "contain")
     ],
   )
   #proof[

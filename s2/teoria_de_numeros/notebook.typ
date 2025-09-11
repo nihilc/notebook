@@ -12,6 +12,7 @@
 
 #pagebreak()
 
+
 #include "./section/2025-08-25.typ"
 #include "./section/2025-08-25-ej.typ"
 
@@ -19,3 +20,22 @@
 
 #include "section/2025-08-28.typ"
 #include "section/2025-08-28-ej.typ"
+
+#pagebreak()
+
+#include "section/2025-09-01.typ"
+#include "section/2025-09-01-ej.typ"
+
+#pagebreak()
+
+#include "section/2025-09-04.typ"
+#include "section/2025-09-04-ej.typ"
+
+#pagebreak()
+
+= Clase #datetime(year: 2025, month: 9, day: 08).display()
+Se desarrollaron Ejercicios #link(<ej:4.3>)[4.3] y #link(<ej:4.4>)[4.4]
+
+#pagebreak()
+
+= Clase #datetime(year: 2025, month: 9, day: 11).display()

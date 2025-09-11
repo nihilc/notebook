@@ -1,4 +1,4 @@
-= Información
+#heading(numbering: none)[Información]
 
 *Profesor*: Carlos Andres Giraldo Hernandez
 
