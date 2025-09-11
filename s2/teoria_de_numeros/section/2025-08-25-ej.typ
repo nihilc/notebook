@@ -2,6 +2,7 @@
 
 == Ejercicios
 
+// TODO: Desarrollar
 #exercise[
   Demuestre que dadas $a,b in ZZ$ con $b!=0$, existen $q,r in ZZ$ unicos tal que
   $ a=b q + r, quad 0<=r<b $
