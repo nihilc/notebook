@@ -43,3 +43,8 @@ Se desarrollaron @ej:4.3 y @ej:4.4
 
 // Clase 7
 #include "section/2025-09-15.typ"
+#pagebreak()
+
+// Clase 8
+#include "section/2025-09-18.typ"
+= Clase #datetime(year: 2025, month: 9, day: 18).display()
