@@ -39,3 +39,7 @@ Se desarrollaron @ej:4.3 y @ej:4.4
 
 // Clase 6
 #include "section/2025-09-11.typ"
+#pagebreak()
+
+// Clase 7
+#include "section/2025-09-15.typ"
