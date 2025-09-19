@@ -72,16 +72,6 @@
     ]
   ]
 
-== Máximo Común Divisor
-
-+ Leer sobre máximo común divisor, propiedades, ejemplos
-
-#definition[Máximo Común Divisor][
-  El entero $a$ es un divisor común de $b$ y $c$ en caso que $a|b and a|c$. Puesto que solamente existe un numero finito de divisores de cualquier entero diferente de cero, solamente existen un numero finito de divisores comunes de $b$ y $c$, excepto en el caso de que $b=c=0$. Si por lo menos uno de $b$ y $c$ no es $0$, el mayor entre sus divisores comunes se llaman máximo común divisor de $b$ y $c$ y se denota por $mcd(b, c)$. De modo semejante se denota el máximo común divisor $g$ de los enteros $b_1,b_2,dots,b_n$, no todos cero por $mcd(b_1, b_2, dots, b_n)$.
-]<def:mcd>
-
-#remark[Por lo tanto el máximo común divisor $mcd(b, c)$ esta definido para todo par de enteros $b,c$ excepto $b=0,c=0$ y se observa que $mcd(b, c)>=1$.]
-
 == Estructuras algebraicas
 
 #definition[
@@ -159,6 +149,3 @@
   + *Grupo* si $*$ es asociativa, modulativa e invertiva.
   + *Grupo Abeliano* si $*$ es asociativa, modulativa, invertiva y conmutativa.
 ]
-
-+ Buscar 2 de cada Semi-grupo, Monoide, Grupo, Grupo Abeliano (exclusivos)
-
