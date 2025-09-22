@@ -231,9 +231,47 @@
   Sea $a,b in ZZ$ no nulos simultáneamente, entonces existen $x_0,y_0 in ZZ$ tal que:
   $ (a,b)= a x_0 + b x_0 $
 
-  // TODO: revisar demostración
-  #proof[]
-]
+  #proof[
+    Sea $S={a x + b y: x,y in ZZ and a x + b y > 0} subset.eq NN$
+
+    #enum[
+      Si $a<=b$ entonces:
+      - $a=b and a>0 --> a(1)+b(1) in S$
+      - $a=b and a<0 --> a(-1)+b(-1) in S$
+      - $a<b --> b-a>0 --> a(-1)+b(1) in S$\
+
+      _"El razonamiento para $a>=b$ es análogo."_
+
+      Entonces $S$ es no vació, por PBO tiene mínimo
+    ][
+
+      Como $min(S) in S$, existe $x_0,y_0 in ZZ$ tal que
+
+      $ min(S)=a x_0 + b y_0 $
+
+      $(a,b)|a and (a,b)|b ==> (a,b)|min(S)$ #h(1fr)
+
+      Como $(a,b)|min(S) and (a,b)>0 and min(S)>0 ==> #rect[$(a,b)<=min(S)$]$
+
+      Por algoritmo de Euclídes existen $q,r$ únicos tal que
+      $ a=min(S) q + r, quad 0<=r<min(S) $
+      $
+        r & = a - min(S) q             \
+          & = a - q(a x_0 + b y_0)     \
+          & = a - a x_0 q - b y_0 q    \
+          & = a(1 - x_0 q) + b(-y_0 q) \
+      $
+      Si $r>0$, entonces $r in S ==> r>= min(S)$ Lo cual es una contradicción, por lo tanto $r=0 ==> a= min(S) q ==> min(S)|a$
+
+      _"El razonamiento para $min(S)|b$ es análogo"_
+
+      #text(red)[Duda:]
+      Como $min(S)|a and min(S)|b ==> min(S)|(a,b) ==> min(S)<=(a,b)$
+
+      Por lo tanto $min(S)<=(a,b) and min(S)>=(a,b) ==> min(S)=(a,b)$
+    ]
+  ]
+]<teo:8.4>
 #example[
   $(42,105)=21$
 

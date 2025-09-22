@@ -47,3 +47,8 @@ Se desarrollaron @ej:4.3 y @ej:4.4
 
 // Clase 8
 #include "section/2025-09-18.typ"
+#pagebreak()
+
+// Clase 9
+= Clase #datetime(year: 2025, month: 9, day: 22).display()
+Se hizo demostración de @teo:8.4
