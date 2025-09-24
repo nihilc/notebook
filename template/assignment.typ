@@ -30,7 +30,7 @@
 
 // Numbering
 #set heading(numbering: "1.")
-#set math.equation(numbering: "(1)")
+//#set math.equation(numbering: "(1)")
 
 // Fonts
 #set text(lang: lang, font: font.main, size: font.size)
@@ -64,6 +64,7 @@
 #show link: set text(fill: blue)
 #set line(stroke: 1pt + color.fg)
 #set rect(stroke: 1pt + color.fg)
+#set square(stroke: 1pt + color.fg)
 #set table(stroke: 1pt + color.fg)
 
 // Style
@@ -80,8 +81,47 @@
   }
 })
 #show heading: set block(spacing: 1em)
-#set list(spacing: 10pt, indent: 2pt, marker: "•")
-#set enum(spacing: 10pt, indent: 2pt, numbering: n => emph[#n.], full: false)
+#set list(spacing: 1em, indent: 2pt, marker: "•")
+#set enum(spacing: 1em, indent: 2pt, numbering: n => emph[#n.], full: false)
+
+/// Environments
+#let custom-box(
+  title: "Title",
+  sub-title: none,
+  separator: ":",
+  body: [],
+  qed: false,
+  ..args,
+) = {
+  let pa = args.pos()
+  let num-pas = pa.len()
+  let sub-title = if num-pas == 2 { pa.at(0) }
+  let body = if num-pas > 0 { pa.at(num-pas - 1) }
+  block(width: 100%, breakable: true, {
+    set align(left)
+    text(style: "oblique", weight: "bold", {
+      if sub-title == none [
+        #title;#separator
+      ] else [
+        #title #text(weight: "regular")[(#sub-title)];#separator
+      ]
+    })
+    pad(x: 0.5em, {
+      body
+      if qed {
+        h(1fr)
+        box(square(size: 0.5em, radius: 1pt))
+      }
+    })
+  })
+}
+#let proof = custom-box.with(title: "Demostración", qed: true)
+#let theorem = custom-box.with(title: "Teorema")
+#let definition = custom-box.with(title: "Definición")
+#let algorithm = custom-box.with(title: "Algoritmo")
+#let proposition = custom-box.with(title: "Proposición")
+#let lemma = custom-box.with(title: "Lema")
+#let corollary = custom-box.with(title: "Corolario")
 
 /// Content
 

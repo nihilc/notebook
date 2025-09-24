@@ -85,32 +85,43 @@
 #set enum(spacing: 1em, indent: 2pt, numbering: n => emph[#n.], full: false)
 
 /// Environments
-#let proof(
-  title: "Demostración",
+#let custom-box(
+  title: "Title",
+  sub-title: none,
   separator: ":",
   body: [],
+  qed: false,
   ..args,
 ) = {
   let pa = args.pos()
   let num-pas = pa.len()
-  let title = if num-pas == 2 {
-    "Demostracion de " + pa.at(0)
-  } else { title }
-  let body = if num-pas > 0 and num-pas <= 2 {
-    pa.at(num-pas - 1)
-  } else { body }
-
+  let sub-title = if num-pas == 2 { pa.at(0) }
+  let body = if num-pas > 0 { pa.at(num-pas - 1) }
   block(width: 100%, breakable: true, {
-    text(style: "oblique", weight: "bold")[
-      #title;#separator
-    ]
+    set align(left)
+    text(style: "oblique", weight: "bold", {
+      if sub-title == none [
+        #title;#separator
+      ] else [
+        #title #text(weight: "regular")[(#sub-title)];#separator
+      ]
+    })
     pad(x: 0.5em, {
       body
-      h(1fr)
-      box(square(size: 0.5em))
+      if qed {
+        h(1fr)
+        box(square(size: 0.5em, radius: 1pt))
+      }
     })
   })
 }
+#let proof = custom-box.with(title: "Demostración", qed: true)
+#let theorem = custom-box.with(title: "Teorema")
+#let definition = custom-box.with(title: "Definición")
+#let algorithm = custom-box.with(title: "Algoritmo")
+#let proposition = custom-box.with(title: "Proposición")
+#let lemma = custom-box.with(title: "Lema")
+#let corollary = custom-box.with(title: "Corolario")
 
 /// Content
 
