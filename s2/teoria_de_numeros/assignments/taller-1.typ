@@ -64,6 +64,7 @@
 #show link: set text(fill: blue)
 #set line(stroke: 1pt + color.fg)
 #set rect(stroke: 1pt + color.fg)
+#set square(stroke: 1pt + color.fg)
 #set table(stroke: 1pt + color.fg)
 
 // Style
@@ -80,8 +81,36 @@
   }
 })
 #show heading: set block(spacing: 1em)
-#set list(spacing: 10pt, indent: 2pt, marker: "•")
-#set enum(spacing: 10pt, indent: 2pt, numbering: n => emph[#n.], full: false)
+#set list(spacing: 1em, indent: 2pt, marker: "•")
+#set enum(spacing: 1em, indent: 2pt, numbering: n => emph[#n.], full: false)
+
+/// Environments
+#let proof(
+  title: "Demostración",
+  separator: ":",
+  body: [],
+  ..args,
+) = {
+  let pa = args.pos()
+  let num-pas = pa.len()
+  let title = if num-pas == 2 {
+    "Demostracion de " + pa.at(0)
+  } else { title }
+  let body = if num-pas > 0 and num-pas <= 2 {
+    pa.at(num-pas - 1)
+  } else { body }
+
+  block(width: 100%, breakable: true, {
+    text(style: "oblique", weight: "bold")[
+      #title;#separator
+    ]
+    pad(x: 0.5em, {
+      body
+      h(1fr)
+      box(square(size: 0.5em))
+    })
+  })
+}
 
 /// Content
 
