@@ -146,11 +146,64 @@
   Demuestre por inducción:
 
   Si $a_1|a_2, a_2|a_3, dots, a_(n-1)|a_n$, entonces $a_1|a_n$
+
+  #proof[no inducción][
+    Por Hipótesis existen $x_1,x_2,dots,x_(n-1) in ZZ$ tal que:
+    $
+         a_2 & = a_1 x_1                                       \
+         a_3 & = a_2 x_2         && = a_1x_1x_2                \
+      dots.v                                                   \
+         a_n & = a_(n-1) x_(n-1) && = a_1x_1x_2 dots.c x_(n-1) \
+    $
+    Entonces podemos expresar $a_n=a_1 product_(i=1)^(n-1) x_i$
+
+    Como $product_(i=1)^(n-1) x_i = x_1x_2dots.c x_(n-1) in ZZ$, entonces $a_1|a_n$
+  ]
+
+  #proof[inducción][
+    #list[
+      Caso Base: $n=2, a_1|a_2$
+    ][
+      Paso inductivo: Supongamos que si $a_1|a_2, a_2|a_3, dots, a_(n-1)|a_n$, entonces $a_1|a_n$
+
+      Por HI $a_1|a_n$ entonces $a_n=a_1 k_1$ para algún $k_1 in ZZ$
+
+      #text(red)[Duda:] Como $a_n|a_(n+1)$ entonces $a_(n+1)=a_n k_2$ para algún $k_2 in ZZ$
+
+      $a_(n+1)=a_n k_2 = a_1 k_1 k_2 ==> a_1|a_(n+1)$
+    ]
+    Por lo tanto si $a_1|a_2, a_2|a_3, dots, a_(n-1)|a_n$ entonces $a_1|a_n$
+  ]
 ][
   Demuestre por inducción:
 
   Si $a|b_1, a|b_2, dots , a|b_n$, entonces $a|b_1x_1 + b_2x_2 + dots + b_n x_n, quad$
   $x_1,x_2,dots,x_n in ZZ$
+
+  #proof[
+    - Caso base: $n=2$
+      $
+        b_1=a k_1 and b_2 = a k_2 & ==> b_1 x_1 = a k_1 x_1 and b_2 x_2 = a k_2 x_2 \
+                                  & ==> b_1x_1 + b_2x_2 = a k_1x_1 + a k_2x_2       \
+                                  & ==> b_1x_1 + b_2x_2 = a (k_1x_1 + k_2x_2)       \
+                                  & ==> a|(b_1x_1 + b_2x_2)                         \
+      $
+    - Paso Inductivo: Supongamos
+      $
+        a|b_1, a|b_2, dots, a|b_n ==> a|b_1x_1 + b_2x_2 + dots + b_n x_n, quad x_1,x_2,dots,x_n in ZZ
+      $
+      Por HI $b_1x_1 + b_2x_2 + dots + b_n x_n = sum_(i=i)^(n) (b_i x_i) = a k, quad k in ZZ$
+
+      #text(red)[Duda:] Como $a|b_(n+1)$, entonces $b_(n+1)=a q, quad q in ZZ$
+      $
+                         a k & = sum_(i=1)^n (b_i x_i)                  \
+        a k + b_(n+1)x_(n+1) & = sum_(i=1)^n (b_i x_i) + b_(n+1)x_(n+1) \
+           a k + a q x_(n+1) & = sum_(i=1)^(n+1) (b_i x_i)              \
+           a (k + q x_(n+1)) & = sum_(i=1)^(n+1) (b_i x_i)              \
+      $
+      Esto muestra que $a|sum_(i=1)^(n+1)(b_i x_i)$
+    Por lo tanto si $a|b_1,a|b_2,dots,a|b_n$, entonces $a|sum_(i=1)^(n)(b_i x_i)$
+  ]
 ][
   Demostrar por inducción: Sean $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen enteros $x_1,x_2,dots,x_n$, tales que $(a_1,a_2,dots,a_n)=a_1x_1 + a_2x_2 + dots a_n x_n$
 ][
