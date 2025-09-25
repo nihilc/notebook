@@ -181,18 +181,20 @@
   $x_1,x_2,dots,x_n in ZZ$
 
   #proof[
-    - Caso base: $n=2$
+    #list[
+      Caso base: $n=2$
       $
         b_1=a k_1 and b_2 = a k_2 & ==> b_1 x_1 = a k_1 x_1 and b_2 x_2 = a k_2 x_2 \
                                   & ==> b_1x_1 + b_2x_2 = a k_1x_1 + a k_2x_2       \
                                   & ==> b_1x_1 + b_2x_2 = a (k_1x_1 + k_2x_2)       \
                                   & ==> a|(b_1x_1 + b_2x_2)                         \
       $
-    - Paso Inductivo: Supongamos
+    ][
+      Paso Inductivo: Supongamos
       $
         a|b_1, a|b_2, dots, a|b_n ==> a|b_1x_1 + b_2x_2 + dots + b_n x_n, quad x_1,x_2,dots,x_n in ZZ
       $
-      Por HI $b_1x_1 + b_2x_2 + dots + b_n x_n = sum_(i=i)^(n) (b_i x_i) = a k, quad k in ZZ$
+      Por HI $b_1x_1 + b_2x_2 + dots + b_n x_n = sum_(i=1)^(n) (b_i x_i) = a k, quad k in ZZ$
 
       #text(red)[Duda:] Como $a|b_(n+1)$, entonces $b_(n+1)=a q, quad q in ZZ$
       $
@@ -202,6 +204,7 @@
            a (k + q x_(n+1)) & = sum_(i=1)^(n+1) (b_i x_i)              \
       $
       Esto muestra que $a|sum_(i=1)^(n+1)(b_i x_i)$
+    ]
     Por lo tanto si $a|b_1,a|b_2,dots,a|b_n$, entonces $a|sum_(i=1)^(n)(b_i x_i)$
   ]
 ][
