@@ -229,7 +229,7 @@
 
 #theorem[
   Sea $a,b in ZZ$ no nulos simultáneamente, entonces existen $x_0,y_0 in ZZ$ tal que:
-  $ (a,b)= a x_0 + b x_0 $
+  $ (a,b)= a x_0 + b y_0 $
 
   #proof[
     Sea $S={a x + b y: x,y in ZZ and a x + b y > 0} subset.eq NN$

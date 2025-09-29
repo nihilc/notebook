@@ -208,18 +208,150 @@
     Por lo tanto si $a|b_1,a|b_2,dots,a|b_n$, entonces $a|sum_(i=1)^(n)(b_i x_i)$
   ]
 ][
-  Demostrar por inducción: Sean $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen enteros $x_1,x_2,dots,x_n$, tales que $(a_1,a_2,dots,a_n)=a_1x_1 + a_2x_2 + dots a_n x_n$
+  Demostrar por inducción: Sean $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen enteros $x_1,x_2,dots,x_n$, tales que $(a_1,a_2,dots,a_n)=a_1x_1 + a_2x_2 + dots + a_n x_n$
+
+  #proof[
+    $
+      (forall a_1,a_2,dots,a_n in ZZ)
+      (exists x_1,x_2,dots,x_n in ZZ)
+      ((a_1,a_2,dots,a_n)=sum_(i=1)^n (a_i x_i))
+    $
+    #list[
+      Caso Base: $n=2$
+
+      Sea $S={a_1 x+a_2 y: x,y in ZZ and a_1 x + a_2 y >0}$
+      - $a_1=a_2 and a_1>0 ==> a_1(1)+a_2(1) in S$
+      - $a_1=a_2 and a_1<0 ==> a_1(-1)+a_2(-1) in S$
+      - $a_1<a_2 ==> a_2-a_1>0 ==> a_1(-1)+a_2(1) in S$
+      "El razonamiento para $a_1>=a_2$ es análogo"
+
+      Entonces $S!=emptyset$
+
+      Como $min(S) in S$, existen $x_0,y_0$ tal que
+      $ min(S)=a_1 x_0 + a_2 y_0 $
+      $(a_1,a_2)|a_1 and (a_1,a_2)|a_2 ==> (a_1,a_2)|min(S)$
+
+      Como $(a_1,a_2)|min(S) and (a_1,a_2)>0 and min(S)>0 ==> (a_1,a_2) <= min(S)$
+
+      Por algoritmo de la division existen únicos $q,r in ZZ$ tal que
+      $ a_1 = min(S) q + r, quad 0<=r<min(S) $
+      $
+        r & = a_1-min(S)q                \
+          & = a_1-(a_1 x_0 + a_2 y_0)q   \
+          & = a_1-a_1 q x_0 - a_2 q y_0  \
+          & = a_1(1-q x_0) + a_2(-q y_0) \
+      $
+      Si $r>0 ==> r in S ==> r>=min(S)$, lo cual contradice $r<min(S)$, por lo tanto $r=0 ==> a_1=min(S)q ==> min(S)|a$
+
+      "El razonamiento para $min(S)|a_2$ es análogo"
+
+      Como $min(S)|a_1 and min(S)|a_2 ==> min(S)|(a_1,a_2) ==> min(S)<=(a_1,a_2)$
+
+      Por lo tanto $min(S)<=(a_1,a_2) and (a_1,a_2)<=min(S) ==> min(S)=(a_1,a_2)$
+    ][
+      Paso inductivo: Supongamos
+      $
+        (forall a_1,a_2,dots,a_n in ZZ)
+        (exists x_1,x_2,dots,x_n in ZZ)
+        ((a_1,a_2,dots,a_n)=sum_(i=1)^n (a_i x_i))
+      $
+      Sea $g=(a_1,a_2,dots,a_n)$
+      $
+                          g & = sum_(i=1)^n (a_i x_i)                   \
+        g + a_(n+1) x_(n+1) & = sum_(i=1)^n (a_i x_i) + a_(n+1) x_(n+1) \
+      $
+      #text(red)[Incompleta]
+    ]
+  ]
 ][
   Demostrar: Sean $a,b in ZZ$ no nulos simultáneamente,
   $ d=(a,b) <==> cases(d|a and d|b, m|a and m|b ==> m|d) $
+
+  #proof[
+    #list(spacing: 20pt)[
+      $d=(a,b) ==> cases(d|a and d|b, m|a and m|b ==> m|d)$
+
+      Sea $S={x in ZZ: x|a and x|b}$
+
+      + Por definición si $d=(a,b)$, entonces $d=max(S)$, por lo tanto $d|a and d|b$
+      + Si $m|a and m|b ==> m in S$, como $d=max(S)$, entonces $m<=d$
+
+
+    ][
+      $cases(reverse: #true, d|a and d|b, m|a and m|b ==> m|d) ==> d=(a,b)$
+
+      #text(red)[DUDA:]
+      Sea $a=90 and b=60$
+      $
+           op("div")(90) & ={1,2,3,5,6,9,10,15,30,45,90}    \
+           op("div")(60) & ={1,2,3,4,5,6,10,12,15,20,30,60} \
+        op("div")(90,60) & = {1,2,3,5,6,10,15,30}           \
+      $
+      Si tomamos $m=2 and d=10$
+      $
+        10|90 and 10|60 \
+        2|90 and 2|60 ==> 2|10
+      $
+      Pero $10=d!=(90,60)=30$
+    ]
+  ]
 ][
   Demostrar: $m>0 ==> (m a, m b)=m(a,b)$
+
+  #proof[
+    Sea $S_1={m a x + m b y: x,y in ZZ and m a x + m b y >0}$
+
+
+
+    $
+      (m a, m b) = min(S_1) = m a x_0 + m b y_0 & = m(a x_0 + b y_0)
+    $
+
+    Como $m(a x_0 + b y_0)>0 and m>0 ==> a x_0 + b y_0 >0$
+
+    Sea $S_2={a x + b y: x,y in ZZ and a x + b y >0}$
+    $
+      (m a, m b) = m(a x_0 + b y_0) = m min(S_2) = m(a,b)
+    $
+    Por lo tanto $(m a,m b)=m(a,b)$
+  ]
 ][
   Demostrar: $d>0 and d|a and d|b ==> (a/d,b/d)=1/d (a,b)$
+
+  #proof[
+    Como $d|a$ y $d|b$, existen $m,n in ZZ$ tal que $a=d m$ y $b=d n$
+
+    $
+      (a,b) & = a x + b y     & quad x,y in ZZ \
+            & = d m x + d n y                  \
+            & = d(m x + n y)                   \
+    $
+    Como $d>0$ y $d|(a,b)$ podemos dividir la expresión por $d$
+    $
+      1/d (a,b) = m x + n y = a/d x + b/d y = (a/d, b/d)
+    $
+  ]
 ][
   Demostrar: $(a,m)=(b,m)=1 ==> (a b,m)=1$
+
+  #proof[
+    Como $(a,m)=a x + m y=1$ y $(b,m)= b u + m v=1$
+    $
+      1 & = (a x + m y)(b u + m v) \
+      & = (a x)(b u) + (a x)(m v) + (m y)(b u) + (m y)(m v) \
+      & = a b(x u) + m (a x v) + m (b y u) + m (m y v) \
+      & = a b underbrace((x u), in ZZ) + m underbrace((a x v + b y u + m y v), in ZZ) \
+      & = (a b, m)
+    $
+  ]
 ][
   Demostrar: $(a,b)=(b,a)=(-a,b)=(a,-b)=(-a,-b)=(a,b+a x), quad x in ZZ$
 ][
   Demostrar: $c|a b and (c,b)=1 ==> c|a$
+
+  #proof[
+    $(c,b)=1=c x + b y, quad x,y in ZZ$
+
+    $c|a b ==> a b=c k ==> k = a/c, quad k in ZZ$
+  ]
 ]
