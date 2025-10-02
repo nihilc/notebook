@@ -194,7 +194,7 @@
         ==> a|(b_1x_1 + b_2x_2 + dots + b_n x_n),
         quad x_1,x_2,dots,x_n in ZZ
       $
-      También se supone la relación para $n+1$, tal que $a|b_1,a|b_2,dots a|b_n,a|b_(n+1)$
+      También se supone la relación para $n+1$, tal que $a|b_(n+1)$
 
       Por HI $b_1x_1 + b_2x_2 + dots + b_n x_n = a k, quad k in ZZ$
 
@@ -208,40 +208,40 @@
     ]
   ]
 ][
-  Demostrar por inducción: Sean $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen enteros $x_1,x_2,dots,x_n$, tales que $(a_1,a_2,dots,a_n)=a_1x_1 + a_2x_2 + dots + a_n x_n$
+  Demostrar por inducción: Sean $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen enteros $x_1,x_2,dots,x_n$, tales que
+  $ (a_1,a_2,dots,a_n)=a_1x_1 + a_2x_2 + dots + a_n x_n $
 
   #proof[
-    $
-      (forall a_1,a_2,dots,a_n in ZZ)
-      (exists x_1,x_2,dots,x_n in ZZ)
-      ((a_1,a_2,dots,a_n)=sum_(i=1)^n (a_i x_i))
-    $
     #list[
       Caso Base: $n=2$
 
       Sea $S={a_1 x+a_2 y: x,y in ZZ and a_1 x + a_2 y >0}$
-      - $a_1=a_2 and a_1>0 ==> a_1(1)+a_2(1) in S$
-      - $a_1=a_2 and a_1<0 ==> a_1(-1)+a_2(-1) in S$
-      - $a_1<a_2 ==> a_2-a_1>0 ==> a_1(-1)+a_2(1) in S$
-      "El razonamiento para $a_1>=a_2$ es análogo"
+
+      - Si $a_1=a_2$ y $a_1>0$, entonces $a_1(1)+a_2(1) in S$
+      - Si $a_1=a_2$ y $a_1<0$, entonces $a_1(-1)+a_2(-1) in S$
+      - Si $a_1<a_2$, entonces $a_2-a_1>0$, por lo tanto $a_1(-1)+a_2(1) in S$
+      - Si $a_1>a_2$, entonces $a_1-a_2>0$, por lo tanto $a_1(1)+a_2(-1) in S$
 
       Entonces $S!=emptyset$
 
       Como $min(S) in S$, existen $x_0,y_0$ tal que
       $ min(S)=a_1 x_0 + a_2 y_0 $
+
       $(a_1,a_2)|a_1 and (a_1,a_2)|a_2 ==> (a_1,a_2)|(a_1x_0 + a_2+y_0) ==> (a_1,a_2)|min(S)$
 
-      Como $(a_1,a_2)|min(S) and (a_1,a_2)>0 and min(S)>0 ==> (a_1,a_2) <= min(S)$
+      $(a_1,a_2)|min(S) and (a_1,a_2)>0 and min(S)>0 ==> (a_1,a_2) <= min(S)$
 
       Por algoritmo de la division existen únicos $q,r in ZZ$ tal que
       $ a_1 = min(S) q + r, quad 0<=r<min(S) $
       $
         r & = a_1-min(S)q                \
           & = a_1-(a_1 x_0 + a_2 y_0)q   \
-          & = a_1-a_1 q x_0 - a_2 q y_0  \
-          & = a_1(1-q x_0) + a_2(-q y_0) \
+          & = a_1-a_1 x_0 q - a_2 y_0 q  \
+          & = a_1(1-x_0 q) + a_2(-y_0 q) \
       $
-      Si $r>0 ==> r in S ==> r>=min(S)$, lo cual contradice $r<min(S)$, por lo tanto $r=0 ==> a_1=min(S)q ==> min(S)|a$
+      Si $r>0 ==> r in S ==> r>=min(S)$, lo cual contradice $r<min(S)$
+
+      Por lo tanto $r=0 ==> a_1=min(S)q ==> min(S)|a$
 
       "El razonamiento para $min(S)|a_2$ es análogo"
 
@@ -249,12 +249,9 @@
 
       Por lo tanto $min(S)<=(a_1,a_2) and (a_1,a_2)<=min(S) ==> min(S)=(a_1,a_2)$
     ][
-      Paso inductivo: Supongamos
-      $
-        (forall a_1,a_2,dots,a_n in ZZ)
-        (exists x_1,x_2,dots,x_n in ZZ)
-        ((a_1,a_2,dots,a_n)=sum_(i=1)^n (a_i x_i))
-      $
+      Paso inductivo: Supongamos que para todo $a_1,a_2,dots,a_n in ZZ$ no nulos simultáneamente, existen $x_1,x_2,dots,x_n$ tales que
+      $ (a_1,a_2,dots,a_n)=a_1x_1+a_2x_2+dots+a_n x_n $
+
       Sea $d=(a_1,a_2,dots,a_n)$
 
       Por definición de MCD, $d$ divide a cada $a_1,a_2,dots,a_n$
@@ -298,7 +295,7 @@
     ][
       $<==$
 
-      Por hipótesis $d|a$ y $d|b$
+      Por hipótesis $d>0$, $d|a$ y $d|b$
 
       Sea $k in ZZ$ tal que $k|a$ y $k|b$. Por hipótesis $k|d$
 
@@ -329,10 +326,10 @@
   #proof[
     Como $d|a$ y $d|b$, existen $m,n in ZZ$ tal que $a=d m$ y $b=d n$
 
+    Por teorema de Bézout existen $x,y in ZZ$ tal que $(a,b)=a x + b y$
+
     $
-      (a,b) & = a x + b y     & quad x,y in ZZ \
-            & = d m x + d n y                  \
-            & = d(m x + n y)                   \
+      (a,b) = a x + b y = d m x + d n y = d(m x + n y)
     $
     Como $d>0$ y $d|(a,b)$ podemos dividir la expresión por $d$
     $
@@ -352,7 +349,7 @@
         & = a b (x u) + m (a x v + y (b u + m v))             \
         & = a b (x u) + m (a x v + y)                         \
     $
-    Como $a b (x u) + m (a x v + y)$ es una combinación lineal de $a b$ y $m$, entonces $a b (x u) + m (a x v + y)= (a b, m)$
+    Como $a b (x u) + m (a x v + y)$ es una combinación lineal de $a b$ y $m$, por teorema de Bézout existe una combinación tal que $a b (x u) + m (a x v + y)= (a b, m)$
   ]
 ][
   Demostrar: $ (a,b)=(b,a)=(-a,b)=(a,-b)=(-a,-b)=(a,b+a x), quad x in ZZ $
