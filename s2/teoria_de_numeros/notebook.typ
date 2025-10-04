@@ -52,3 +52,15 @@ Se desarrollaron @ej:4.3 y @ej:4.4
 // Clase 9
 = Clase #datetime(year: 2025, month: 9, day: 22).display()
 Se hizo demostración de @teo:8.4
+
+// Clase 10
+= Clase #datetime(year: 2025, month: 9, day: 25).display()
+No clase por evento
+
+// Clase 11
+= Clase #datetime(year: 2025, month: 9, day: 29).display()
+Se hizo demostración de Ejercicios 1,3,4 del Taller 1
+#pagebreak()
+
+// Clase 12
+#include "section/2025-10-02.typ"

@@ -74,7 +74,6 @@
       columns: (1fr, 1fr),
       align: (left, right),
       [#data.title - #data.course],
-      // WARN: Solución visual al contador, buscar mejor solución
       [#(counter(page).get().at(0) - 1)],
     )
     line(length: 100%)
