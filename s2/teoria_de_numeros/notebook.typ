@@ -64,3 +64,8 @@ Se hizo demostración de Ejercicios 1,3,4 del Taller 1
 
 // Clase 12
 #include "section/2025-10-02.typ"
+#pagebreak()
+
+// Clase 13
+= Clase #datetime(year: 2025, month: 10, day: 6).display()
+Corrección parcial
