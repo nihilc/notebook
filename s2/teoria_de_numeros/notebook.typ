@@ -69,3 +69,16 @@ Se hizo demostración de Ejercicios 1,3,4 del Taller 1
 // Clase 13
 = Clase #datetime(year: 2025, month: 10, day: 6).display()
 Corrección parcial
+#pagebreak()
+
+// Clase 14
+= Clase #datetime(year: 2025, month: 10, day: 9).display()
+Parcial 1 Parte 2
+
+#exercise[
+  + Defina MCM de dos números y explique la importancia de la necesidad de las hipótesis.
+  + Ejemplifique y demuestre el método usado.
+  + Extienda la definición de MCM a un conjunto de $n$ números finito.
+  + Realice una lista de 10 propiedades del MCM.
+  + Demuestre cada una de las propiedades anteriores.
+]
