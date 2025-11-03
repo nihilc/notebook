@@ -146,8 +146,6 @@
 
 // Content
 
-#set page(height: auto)
-
 = Taller
 
 Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conjuntos - Muñoz J._ sección 3.6 pagina 115.
@@ -376,7 +374,7 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
       ][
         Para $[1/2,10/3]_R$, primero expresamos $10/3=3+1/3$
         $
-          [(1/2,10/3)]_R & = {(x,y) in RR^2: (x,y)R(1/2,3+1/3)}                         \
+          [(1/2,10/3)]_R & = {(x,y) in RR^2: (x,y)R(1/2,10/3)}                          \
                          & = {(x,y) in RR^2: x=1/2+m and y=3+1/3+n, quad m,n in ZZ}     \
                          & = {(1/2+m,1/3+n): m,n in ZZ}                                 \
                          & = {(1/2,1/3),(1/2,4/3),(1/2,-4/3),(3/2,1/3),(-3/2,1/3),dots} \
@@ -437,6 +435,7 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
     ]
   ],
   enum.item(11)[
+    #text(red)[Pendiente]
     Considere en $ZZ$ la relación de congruencia módulo $m$
 
     + Demuestre que nunca dos elementos del conjunto ${0,1,2,dots,m-1}$ pueden ser congruentes entre si módulo $m$.
