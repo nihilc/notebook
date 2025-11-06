@@ -241,10 +241,6 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
     ][
       Idéntico para un conjunto con 5 elementos
 
-      #text(
-        red,
-      )[*DUDA:* puedo utilizar los números de Bell o debo hacerlo por una relación de orden]
-
       Para esto podemos utilizar los números de Bell los cuales se calculan por
       $ B_(n+1) = sum_(k=0)^n binom(n, k)B_k, quad B_0=1 $
 
@@ -435,12 +431,57 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
     ]
   ],
   enum.item(11)[
-    #text(red)[Pendiente]
     Considere en $ZZ$ la relación de congruencia módulo $m$
 
-    + Demuestre que nunca dos elementos del conjunto ${0,1,2,dots,m-1}$ pueden ser congruentes entre si módulo $m$.
-    + Pruebe que todo entero es congruente módulo $m$ con un único elemento del conjunto ${0,1,2,dots,m-1}$
-    + Deduzca de $(b)$ y $(c)$ que
+    #enum[
+      Demuestre que nunca dos elementos del conjunto ${0,1,2,dots,m-1}$ pueden ser congruentes entre si módulo $m$.
+      #proof[
+        Sea $m in ZZ$ con $m>0$\
+        Sea $a,b in {0,1,2,dots,m-1}$ tal que $a equiv b (mod m)$
+
+        Por definición de congruencia $m|(a-b)$, entonces existe $k in ZZ$ tal que
+        $ a-b=m k $
+
+        Como $a,b in {0,1,2,dots,m-1}$, entonces $|a-b|<=m-1$. Si $k!=0$, entonces $|k m|>=m$, lo que es una contradicción. Por tanto $k=0$, entonces $a-b=0$ , se sigue $a=b$
+
+        Concluyendo si $a,b in {0,1,2,dots,m-1}$ solo pueden ser congruentes entre si modulo $m$, si $a=b$
+      ]
+    ][
+      Pruebe que todo entero es congruente módulo $m$ con un único elemento del conjunto ${0,1,2,dots,m-1}$
+      #proof[
+        Sea $a,m in ZZ$ con $m>0$
+        #list[
+          *Existencia:*
+
+          Por algoritmo de la division existen $q,r in ZZ$ tal que
+          $ a=m q + r, quad 0<=r<m $
+          Como $a-r=m q$, entonces $m|(a-r)$, se sigue que $a equiv r (mod m)$.
+
+          Entonces todo entero $a$ es congruente modulo $m$ con algún elemento $r$ del conjunto ${0,1,dots,m-1}$
+        ][
+          *Unicidad:* Supongamos $r,s in {0,1,dots,m-1}$, y también $a equiv r(mod m)$ y $a equiv s(mod m)$
+          $
+            a equiv r(mod m) ==> m|(a-r) ==> a-r=m k_1, quad k_1 in ZZ \
+            a equiv s(mod m) ==> m|(a-s) ==> a-s=m k_2, quad k_2 in ZZ
+          $
+          Restando $(a-s)-(a-r) & = m k_2 -m k_1$, tenemos $r-s & = m(k_2 - k_1)$
+
+          Como $r,s in {0,1,dots,m-1}$, entonces $|r-s|<=m-1$. Si $k_2-k_1 !=0$, entonces $|m(k_2-k_1)|>=m$, lo cual es una contradicción. Por tanto $k_2-k_1=0$, entonces $r-s=0$, concluyendo $r=s$
+        ]
+        Por lo tanto todo entero $a$ es congruente modulo $m$ con un único elemento del conjunto ${0,1,dots,m-1}$
+      ]
+    ][
+      Deduzca de $(a)$ y $(b)$ que
       $ ZZ\/(m) = {[0],[1],[2],dots,[m-1]} $
+
+      De (a) Se tiene que dos elementos distintos de ${0,1,dots,m-1}$ no son congruentes modulo $m$ entre si. Por lo tanto las clases de equivalencia $[0],[1],dots,[m-1]$ son distintas.
+
+      De (b) Se tiene que todo $a in ZZ$ es congruente modulo $m$ con un único elemento de ${0,1,dots,m-1}$. Por lo tanto cada entero perteneces a una única de estas clases
+
+      Cada clase $[r]$ contiene todos los enteros congruentes con $r$
+      $ [r]={a in ZZ: a equiv r (mod m)} = {k in ZZ: r+m k} $
+      Por lo tanto el conjunto cociente es
+      $ ZZ\/(m) = {[0],[1],[2],dots,[m-1]} $
+    ]
   ],
 )
