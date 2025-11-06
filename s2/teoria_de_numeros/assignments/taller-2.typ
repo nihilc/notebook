@@ -253,7 +253,9 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
       Los números de Stirling de segundo tipo $S(n,k)$, se definen como el numero de formas de particionar un conjunto de $n$ elementos en exactamente $k$ subconjuntos no vacíos.
 
       Se obtiene mediante de la recurrencia
-      $ S(n,k)=k dot S(n-1,k) + S(n-1,k-1), quad quad cases(S(0,0)=1, S(n,0)=0\, quad n>0) $
+      $
+        S(n,k)=k dot S(n-1,k) + S(n-1,k-1), quad quad cases(S(0,0)=1, S(n,0)=0\, quad n>0)
+      $
       Ademas se intuye:
       #list[
         $S(n,0)=0$ para $n>0$, no se puede particionar elementos en $0$ conjuntos
@@ -333,8 +335,27 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
   enum.item(7)[
     Si $R_1, R_2$ son relaciones de equivalencia en $A$
 
-    + Pruebe que $R_1 inter R_2$ también es de equivalencia.
-    + Dé un contraejemplo para hacer ver que en general $R_1 union R_2$ no es una relación de equivalencia.
+    #enum[
+      Pruebe que $R_1 inter R_2$ también es de equivalencia.
+      #proof[
+        Sea $A$ un conjunto y $R_1,R_2 subset.eq A times A$ dos relaciones de equivalencia en $A$ Definimos
+        $ R=R_1 inter R_2 = {(x,y)in A times A: x R_1 y and x R_2 y} $
+        #list[
+          *Reflexividad:* Sea $x in A$. \
+          Como $R_1,R_2$ son relaciones de equivalencia, entonces $x R_1 x$ y $x R_2 x$. Por lo tanto $x R x$
+        ][
+          *Simetría:* Sean $x,y in A$ tal que $x R y$. \
+          Entonces $x R_1 y$ y $x R_2 y$, como $R_1, R_2$ son simétricas, entonces $y R_1 x$ y $y R_2 x$. Por lo tanto $y R x$
+        ][
+          *Transitiva:* Sean $x,y,z in A$ tal que $x R y$ y $y R z$.\
+          Entonces $x R_1 y$, $x R_2 y$, $y R_1 z$ y $y R_2 z$ \
+          Como $R_1,R_2$ son transitivas entonces $x R_1 z$ y $x R_2 z$. Por lo tanto $x R z$
+        ]
+        Concluyendo $R_1 inter R_2$ es una relación de equivalencia
+      ]
+    ][
+      Dé un contraejemplo para hacer ver que en general $R_1 union R_2$ no es una relación de equivalencia.
+    ]
   ],
   enum.item(9)[
     Definimos en $RR^2$ la relación
