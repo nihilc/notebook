@@ -216,59 +216,121 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
       Halle el numero de particiones que existen para un conjunto con $4$ elementos
 
       Sea $A={a,b,c,d}$
+
+      Particiones de 1 subconjunto $ P_15 & ={ {a,b,c,d} } $
+      Particiones de 2 sub conjuntos
+
+      Tipo 1,3
       $
-         P_1 & ={ {a},{b},{c},{d} } \
-                                    \
-         P_2 & ={ {a},{b},{c,d} }   \
-         P_3 & ={ {a},{c},{b,d} }   \
-         P_4 & ={ {a},{d},{b,c} }   \
-         P_5 & ={ {b},{c},{a,c} }   \
-         P_6 & ={ {b},{d},{a,c} }   \
-         P_7 & ={ {c},{d},{a,b} }   \
-                                    \
-         P_8 & ={ {a},{b,c,d} }     \
-         P_9 & ={ {b},{a,c,d} }     \
-        P_10 & ={ {c},{a,b,d} }     \
-        P_11 & ={ {d},{a,b,c} }     \
-                                    \
-        P_12 & ={ {a,b},{c,d} }     \
-        P_13 & ={ {a,c},{b,d} }     \
-        P_14 & ={ {a,d},{b,c} }     \
-                                    \
-        P_15 & ={ {a,b,c,d} }       \
+         P_8 & ={ {a},{b,c,d} } \
+         P_9 & ={ {b},{a,c,d} } \
+        P_10 & ={ {c},{a,b,d} } \
+        P_11 & ={ {d},{a,b,c} } \
       $
+      Tipo 2,2
+      $
+        P_12 & ={ {a,b},{c,d} } \
+        P_13 & ={ {a,c},{b,d} } \
+        P_14 & ={ {a,d},{b,c} } \
+      $
+      Particiones de 3 sub conjuntos
+      $
+        P_2 & ={ {a},{b},{c,d} } \
+        P_3 & ={ {a},{c},{b,d} } \
+        P_4 & ={ {a},{d},{b,c} } \
+        P_5 & ={ {b},{c},{a,c} } \
+        P_6 & ={ {b},{d},{a,c} } \
+        P_7 & ={ {c},{d},{a,b} } \
+      $
+      Particiones de 4 sub conjuntos $ P_1 & ={ {a},{b},{c},{d} } $
       Por tanto existen $15$ particiones para un conjunto con $4$ elementos
     ][
       Idéntico para un conjunto con 5 elementos
 
-      Para esto podemos utilizar los números de Bell los cuales se calculan por
-      $ B_(n+1) = sum_(k=0)^n binom(n, k)B_k, quad B_0=1 $
+      El número de Bell $B_n$ representa el numero de particiones de un conjunto con $n$ elementos. Una forma de obtenerlo es a partir de la suma de los números de Stirling de segundo tipo
+      $ B_n = sum_(k=1)^n S(n,k) $
 
-      En el caso de las particiones para un conjunto de 5 elementos encontramos el quinto numero de Bell
+      Los números de Stirling de segundo tipo $S(n,k)$, se definen como el numero de formas de particionar un conjunto de $n$ elementos en exactamente $k$ subconjuntos no vacíos.
+
+      Se obtiene mediante de la recurrencia
+      $ S(n,k)=k dot S(n-1,k) + S(n-1,k-1), quad quad cases(S(0,0)=1, S(n,0)=0\, quad n>0) $
+      Ademas se intuye:
+      #list[
+        $S(n,0)=0$ para $n>0$, no se puede particionar elementos en $0$ conjuntos
+      ][
+        $S(0,k)=0$ para $k>0$, no se puede armar subconjuntos sin elementos
+      ][
+        $S(n,n)=1$ cada elemento en su propio conjunto
+      ][
+        $S(n,1)=1$ todos los elementos en un conjunto
+      ]
+
+      #proof[
+        Hallemos todas las particiones de ${1,2,dots,n}$ en $k$ subconjuntos, primero particionemos ${1,2,dots,n-1}$ y luego agregamos el elemento $n$.
+
+        Caso 1: $n$ esta en su propio subconjunto
+        - Primero se particiona ${1,2,dots,n-1}$ en $k-1$ subconjuntos. Hay $S(n-1,k-1)$ formas de hacerlo.
+        - Luego $n$ queda en su propio subconjunto.
+        - El total en este caso: $ S(n-1,k-1) times 1= S(n-1,k-1) $
+
+        Caso 2: $n$ se agrega a un subconjunto existente
+        - Primero se particiona ${1,2,n-1}$ en $k$ subconjuntos. Hay $S(n-1,k)$ formas de hacerlo.
+        - Luego se elije en cual de los $k$ bloques se agrega $n$. Hay $k$ opciones.
+        - El total en este caso: $ S(n-1,k) times k = k S(n-1,k) $
+
+        Toda particion de ${1,2,dots,n}$ en $k$ subconjuntos cae en uno y solo uno de los casos. Por tanto, aplicando la regla de la suma.
+        $
+          S(n,k)=underbrace(S(n-1,k-1), "Caso 1") + underbrace(k dot S(n-1,k), "Caso 2")
+        $
+      ]
+
+      Construimos los números de Stirling para $n=1,2,dots,5$
+
+      #table(
+        columns: 2,
+        table.header($n$, $S(n,k)$),
+        $n=1$, $S(1,1)=1$,
+        $n=2$,
+        [
+          $S(2,1)=1$ \
+          $S(2,2)=1$
+        ],
+
+        $n=3$,
+        [
+          $S(3,1)=1$ \
+          $S(3,2)=2 dot S(2,2)+S(2,1)=2(1)+1=3$ \
+          $S(3,3)=1$
+        ],
+
+        $n=4$,
+        [
+          $S(4,1)=1$ \
+          $S(4,2)=2 dot S(3,2) + S(3,1)=2(3)+1=7$ \
+          $S(4,3)=3 dot S(3,3) + S(3,2)=3(1)+3=6$ \
+          $S(4,4)=1$
+        ],
+
+        $n=5$,
+        [
+          $S(5,1)=1$ \
+          $S(5,2)=2 dot S(4,2) + S(4,1) = 2(7)+1=15$ \
+          $S(5,3)=3 dot S(4,3) + S(4,2) = 3(6)+7=25$ \
+          $S(5,4)=4 dot S(4,4) + S(4,3) = 4(1)+6=10$ \
+          $S(5,5)=1$
+        ],
+      )
+
+      Por lo tanto vemos que para un conjunto de $5$ elementos
       $
-        B_0 & = 1 &&&& = 1 \
-        B_1 & = sum_(k=0)^0 binom(0, k)B_k &&= binom(0, 0)B_0 \
-        &&& = 1 dot 1
-        && = 1 \
-        B_2 & = sum_(k=0)^1 binom(1, k)B_k &&= binom(1, 0)B_0 + binom(1, 1)B_1 \
-        &&& = 1 dot 1 + 1 dot 1
-        && = 2 \
-        B_3 & = sum_(k=0)^2 binom(2, k)B_k &&= binom(2, 0)B_0 + binom(2, 1)B_1 + binom(2, 2)B_2 \
-        &&& = 1 dot 1 + 2 dot 1 + 1 dot 2
-        && = 5 \
-        B_4 & = sum_(k=0)^3 binom(3, k)B_k &&= binom(3, 0)B_0 + binom(3, 1)B_1 + binom(3, 2)B_2 + binom(3, 3)B_3 \
-        &&& = 1 dot 1 + 3 dot 1 + 3 dot 2 + 1 dot 5
-        && = 15 \
-        B_5 & = sum_(k=0)^4 binom(4, k)B_k &&= binom(4, 0)B_0 + binom(4, 1)B_1 + binom(4, 2)B_2 + binom(4, 3)B_3 + binom(4, 4)B_4 \
-        &&& = 1 dot 1 + 4 dot 1 + 6 dot 2 + 4 dot 5 + 1 dot 15
-        && = 52
+        B_n = sum_(k=1)^n S(n,k) & = S(5,1) + S(5,2) + S(5,3) + S(5,4) + S(5,5) \
+                                 & = 1 + 15 + 25 + 10 + 1                       \
+                                 & = 52                                         \
       $
-      Por lo tanto el numero de particiones para el conjunto de 5 elementos es 52
     ]
 
   ],
   enum.item(7)[
-    #text(red)[Pendiente]
     Si $R_1, R_2$ son relaciones de equivalencia en $A$
 
     + Pruebe que $R_1 inter R_2$ también es de equivalencia.
@@ -426,8 +488,30 @@ Desarrollar ejercicios 2,4,7,9,11 del Libro _Introducción a la Teoría de Conju
         ))
       ]
     ][
-      #text(red)[Pendiente]
       Pruebe que toda pareja ordenada $(x,y)$ de $RR^2$ es equivalente según $R$ con un único punto de $[0,1) times [0,1)$
+
+      #proof[
+        #list[
+          *Existencia:*
+          Sean $x,y in RR$, sean $m=floor x floor.r$ y $n=floor y floor.r$,
+
+          Entonces $x'=x-m$ satisface $0<=x'<1$ \
+          También $y'=y-n$ satisface $0<=y'<1$.
+
+          Entonces:
+          - $m,n in ZZ$, por definición de parte entera.
+          - $x=x'+m$ y $y=y'+n$, Luego $(x,y)R(x',y')$
+          - $(x',y') in [0,1) times [0,1)$
+        ][
+          *Unicidad:*
+          Sean $(x_1,y_1),(x_2,y_2) in [0,1) times [0,1)$ tales que $(x,y)R(x_1,y_1)$ y $(x,y)R(x_2,y_2)$.
+
+          Por simetría y transitividad $(x_1,y_1)R(x_2,y_2)$, existen $m,n in ZZ$ con
+          $ x_1=x_2+m quad y_1=y_2+n $
+
+          Como $0<=x_1<1$ y $0<=x_2<1$, entonces $x_1-x_2=m$ debe estar en $(-1,1)$. Como $m in ZZ$ y el único entero en el intervalo $(-1,1)$ es $0$, entonces $m=0=x_1-x_2$. Por lo tanto $x_1=x_2$. "Analógicamente para $y_1=y_2$"
+        ]
+      ]
     ]
   ],
   enum.item(11)[
