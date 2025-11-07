@@ -1,5 +1,7 @@
 #import "@local/notebook:0.1.0": *
 
+// Custom math definitions
+
 #let dark = true
 #show: notebook.with(
   lang: "ES",
@@ -93,6 +95,7 @@ Festivo no clase
 
 = Clase #datetime(year: 2025, month: 10, day: 16).display()
 Clase cancelada
+#pagebreak()
 
 = Clase #datetime(year: 2025, month: 10, day: 20).display()
 Entrega Parcial,Taller,Quiz
@@ -117,8 +120,10 @@ Entrega Parcial,Taller,Quiz
 = Clase #datetime(year: 2025, month: 10, day: 23).display()
 
 == Relaciones
+// TODO
 *Apuntes pendientes*
 
+// Clase 19
 = Clase #datetime(year: 2025, month: 10, day: 27).display()
 
 #pagebreak()
@@ -128,3 +133,14 @@ Entrega Parcial,Taller,Quiz
 == Ejercicios
 Resolución ejercicios 3,5,6 pagina 115 Muñoz
 #include "section/2025-10-30.typ"
+#pagebreak()
+
+// Clase 20
+= Clase #datetime(year: 2025, month: 11, day: 3).display()
+Festivo no hubo clase
+#pagebreak()
+
+// Clase 20
+= Clase #datetime(year: 2025, month: 11, day: 6).display()
+
+#include "section/2025-11-06.typ"
