@@ -226,10 +226,10 @@
 
         Por hipótesis de inducción $p_m (a) con(n) p_m (b)$, entonces
         $
-          c_0 + c_1a + c_2a^2 + dots c_m a^m &con(n)
-          c_0 + c_1b + c_2b^2 + dots c_m b^m \
-          c_0 + c_1a + c_2a^2 + dots c_m a^m + c_(m+1)a^(m+1) &con(n)
-          c_0 + c_1b + c_2b^2 + dots c_m b^m + c_(m+1)b^(m+1) \
+          c_0 + c_1a + c_2a^2 + dots + c_m a^m &con(n)
+          c_0 + c_1b + c_2b^2 + dots + c_m b^m \
+          c_0 + c_1a + c_2a^2 + dots + c_m a^m + c_(m+1)a^(m+1) &con(n)
+          c_0 + c_1b + c_2b^2 + dots + c_m b^m + c_(m+1)b^(m+1) \
           p_(m+1) (a) & con(n) p_(m+1) (b)
         $
       ]
