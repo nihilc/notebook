@@ -122,7 +122,7 @@
         #title #text(weight: "regular")[(#sub-title)];#separator
       ]
     })
-    pad(x: 0.5em, {
+    pad(left: 1em, top: -0.25em, bottom: 0.5em, {
       body
       if qed {
         h(1fr)
@@ -194,11 +194,18 @@
 = Congruencias
 == Definición y Propiedades Básicas
 
-*Ejercicios:* // TODO: 2,4,6,8,10
+*Ejercicios:* // TODO: 4,6,8,10
 
 #enum(
   enum.item(2)[
     Probar que si $a c cong(c n) b c$ entonces $a cong(n) b$
+    #proof[
+      $
+        a c cong(c n) b c & ==> &         c n & | a c - b c                         \
+                          & ==> & cancel(c) n & | cancel(c) (a-b)                   \
+                          & ==> &           n & | a-b             & ==> a cong(n) b \
+      $
+    ]
   ],
   enum.item(4)[
     Probar que $3^105 + 4^105 cong(13) 0$
