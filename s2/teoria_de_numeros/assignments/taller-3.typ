@@ -169,11 +169,30 @@
 #counter(heading).update((2, 4))
 == Mínimo Común Múltiplo
 
-*Ejercicios:* // TODO:  3,7
+*Ejercicios:*
 
 #enum(
   enum.item(3)[
     Probar que $(a,b)=(a+b,[a,b])$
+    #proof[
+      Sea $d=(a,b)$, entonces $a=d x$ y $b=d y$, con $(x,y)=1$. Luego
+
+      - $a+b=d x+d y=d(x+y)$
+      - $[a,b]=frac(a b, (a,b))=frac(d x d y, d)=d x y$
+
+      Entonces $(a+b,[a,b])=(d(x+y),d x y)=d(x+y,x y)$
+
+      Sea $p$ un primo divisor común de $x+y$ y $x y$
+
+      Luego $p|x y$, entonces $p|x$ o $p|y$
+
+      Supongamos $p|x$, como $p|(x+y)$ y $p|x$, luego $p|(x+y)+(-x)$, entonces $p|y$
+
+      Ahora $p|x$ y $p|y$, pero $(x,y)=1$, esto solo se cumple en caso de $p=1$, por tanto no hay un primo divisor común de $x+y$ y $x y$, entonces $(x+y,x y)=1$
+
+      Retomando
+      $ (a+b,[a,b])=d(x+y,x y)=d=(a,b) $
+    ]
   ],
   enum.item(5)[
     Si $k$ es múltiplo de $a$ y $b$, probar que $ (|k|)/((k/a,k/b))=[a,b] $
@@ -202,6 +221,33 @@
   ],
   enum.item(7)[
     Sean $d$ y $g$ enteros positivos. Probar que existen enteros $a$ y $b$ tales que $(a,b)=d$ y $[a,b]=g$ si y solo si $d|g$
+
+    #proof[
+      #list[
+        "$==>$" $(d,g in ZZ^+)(exists a,b in ZZ)((a,b)=d and [a,b]=g ==> d|g)$
+
+        Como $(a,b)=d$, entonces $d|a$ y $d|b$
+
+        Como $[a,b]=g$, entonces $a|g$ y $b|g$
+
+        Luego $d|a$ y $a|g$, por tanto $d|g$
+      ][
+        "$<==$" $(d,g in ZZ^+)(d|g ==> (exists a,b in ZZ)((a,b)=d) and [a,b]=g)$
+
+        Como $d|g$, existe $k in ZZ$ tal que $g=d k$
+
+        Sea $a=d$ y $b=g$
+        $
+          (a,b)=(d,g)=(d,d k)
+        $
+        Como para cualquier $x,n in ZZ$, se tiene que $(x,x n)=x$, luego
+        $ (a,b)=(d,d k)=d $
+        Entonces
+        $
+          [a,b]=frac(|a b|, (a,b))=frac(|d g|, d)=|g|=g
+        $
+      ]
+    ]
   ],
   enum.item(10)[
     Hallar enteros $a$ y $b$ tales que $a+b=216$ y $[a,b]=480$
