@@ -4,7 +4,7 @@
 /// Variables
 #let lang = "ES"
 #let data = (
-  title: "Taller 2",
+  title: "Taller 3",
   author: (
     (name: "Christian Mauricio Cardenas Baron", id: "20251167009"),
   ),
@@ -140,7 +140,7 @@
 #let lemma = custom-box.with(title: "Lema")
 #let corollary = custom-box.with(title: "Corolario")
 
-/// Custom math functions
+/// Math
 #let cong(n) = math.attach(math.equiv, br: n)
 #let sumi(i, n) = $sum_(i=#i)^(#n)$
 #let sumj(j, n) = $sum_(j=#j)^(#n)$
@@ -166,7 +166,6 @@
 #pagebreak()
 
 // Content
-#set page(height: auto)
 
 #counter(heading).update(1)
 = Divisibilidad
