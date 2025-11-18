@@ -142,6 +142,10 @@
 
 /// Custom math functions
 #let cong(n) = math.attach(math.equiv, br: n)
+#let sumi(i, n) = $sum_(i=#i)^(#n)$
+#let sumj(j, n) = $sum_(j=#j)^(#n)$
+#let prodi(i, n) = $product_(i=#i)^(#n)$
+#let prodj(j, n) = $product_(j=#j)^(#n)$
 
 /// Content
 
@@ -172,6 +176,7 @@
 *Ejercicios:*
 
 #enum(
+  indent: -6pt,
   enum.item(3)[
     Probar que $(a,b)=(a+b,[a,b])$
     #proof[
@@ -224,7 +229,7 @@
 
     #proof[
       #list[
-        "$==>$" $(d,g in ZZ^+)(exists a,b in ZZ)((a,b)=d and [a,b]=g ==> d|g)$
+        "$==>$" $quad (d,g in ZZ^+)(exists a,b in ZZ)((a,b)=d and [a,b]=g ==> d|g)$
 
         Como $(a,b)=d$, entonces $d|a$ y $d|b$
 
@@ -232,7 +237,7 @@
 
         Luego $d|a$ y $a|g$, por tanto $d|g$
       ][
-        "$<==$" $(d,g in ZZ^+)(d|g ==> (exists a,b in ZZ)((a,b)=d) and [a,b]=g)$
+        "$<==$" $quad (d,g in ZZ^+)(d|g ==> (exists a,b in ZZ)((a,b)=d) and [a,b]=g)$
 
         Como $d|g$, existe $k in ZZ$ tal que $g=d k$
 
@@ -356,9 +361,10 @@
 = Congruencias
 == Definición y Propiedades Básicas
 
-*Ejercicios:* // TODO: 6,8
+*Ejercicios:*
 
 #enum(
+  indent: -7pt,
   enum.item(2)[
     Probar que si $a c cong(c n) b c$ entonces $a cong(n) b$
     #proof[
@@ -397,9 +403,67 @@
     ][
       $1^3+2^3+3^3+dots+(p-1)^3 cong(p) 0$
     ]
+
+
+    #proof[
+      #enum[
+        Sea $S_1=sumi(1, p-1) i$, sabemos que la suma de los $n$ primeros números es
+        $ sumi(1, n) i = frac(n(n+1), 2) $
+        Luego para $n=p-1$
+        $
+          sumi(1, p-1)=frac((p-1)((p-1)+1), 2)=frac((p-1)p, 2)=p ((p-1))/2
+        $
+        Como $p$ es primo y factor de $S_1$, luego
+        $
+          S_1 cong(p) p frac(p-1, 2) cong(p) 0
+        $
+      ][
+        Sea $S_2=sumi(1, p-1) i^2$, sabemos que la suma de los $n$ primeros cuadrados es
+        $ sumi(1, n) i^2 = frac(n(n+1)(2n+1), 6) $
+        Luego para $n=p-1$
+        $
+          sumi(1, p-1) i^2 & = frac((p-1)((p-1)+1)(2(p-1)+1), 6) \
+                           & = frac((p-1)p(2p-1), 6)             \
+                           & = p frac((p-1)(2p-1), 6)            \
+        $
+        Como $p$ es primo y factor de $S_2$, luego
+        $
+          S_2 cong(p) p frac((p-1)(2p-1), 6) cong(p) 0
+        $
+      ][
+        Sea $S_3=sumi(1, p-1) i^3$, sabemos que la suma de los $n$ primeros cubos es
+        $ sumi(1, n) i^3 = (frac(n(n+1), 2))^2 $
+        Luego para $n=p-1$
+        $
+          sumi(1, p-1) i^3 = (frac((p-1)p, 2))^2=(S_1)^2
+        $
+        De (a) tenemos que $S_1 cong(p) 0$, por tanto
+        $
+          (S_1)^2 = S_3 & cong(p) 0
+        $
+      ]
+    ]
   ],
   enum.item(8)[
     Si $f(x)$ es un polinomio con coeficientes enteros y $f(a) cong(n) k$ probar que para todo entero $t$, $f(a+t n) cong(n) k$
+
+    #proof[
+      Sea $f(x)=c_0+c_1x+c_2x^2+dots+c_m x^m = sumi(0, m) c_i x^i$
+
+      Por definición $n|t n$, pero $n|(t n+a-a)$, luego $a+t n cong(n) a$
+
+      Para todo $i in ZZ^*$ se tiene que $(a+t n)^i cong(n) a^i$
+
+      Para todo $c_i in ZZ$ se tiene que $c_i (a+t n)^i cong(n) c_i a^i$
+
+      Luego vemos que todo termino $i$ de $f(a+t n)$ es congruente con su correspondiente $f(a)$ modulo $n$. Por lo tanto su suma también lo es
+      $
+                   c_i (a+t n)^i & cong(n) c_i a^i            \
+        sumj(0, m) c_j (a+t n)^j & cong(n) sumj(0, m) c_j a^j \
+                        f(a+t n) & cong(n) f(a)               \
+      $
+      Luego $f(a+t n) & cong(n) f(a) cong(n) k$, entonces $f(a+t n)cong(n) k$
+    ]
   ],
   enum.item(10)[
     Hallar el dígito de las unidades de los números $13^13$ y $(5)(7)^29+(8)(9)^72$
@@ -451,20 +515,116 @@
 
 == Criterios de Divisibilidad
 
-*Ejercicios:* // TODO: 1,2,3,4,5
+*Ejercicios:* // TODO: 2,4,5
 
 #enum(
   enum.item(1)[
     Sea $n=a_0+a_1 10 + a_2 10^2 + dots + a_k 10^k$ la representación decimal del entero positivo $n$. Probar que $n$ es divisible por $11$, si y solo si $sum_(i=0)^k (-1)^i a_i$ es divisible por 11
+
+    #proof[
+      Sea $n=sumi(0, k) a_i 10^i$
+
+      Vemos que $10 cong(11) -1$
+
+      Para todo $i in ZZ^*$ se tiene que $10^i cong(11) (-1)^i$
+
+      Para todo $a_i in ZZ$ se tiene que $a_i 10^i cong(11) a_i (-1)^i$
+
+      Luego la suma de todos los elementos $a_i 10^i$ va a ser congruente modulo $11$ de la suma de todos los elementos $a_i (-1)^i$ de $i=0,1,dots,k$
+      $ sumi(0, k) a_i 10^i cong(11) sumi(0, k) a_i (-1)^i $
+
+      Luego $n=sumi(0, k)a_i 10^i$, por tanto
+      $ n cong(11) sumi(0, k) a_i (-1)^i $
+
+      #list[
+        "$==>$" $quad 11|n ==> 11|sumi(0, k)(-1)^i a_i$
+
+        Si $11|n$, entonces $n cong(11) 0$
+
+        Por lo anterior tenemos que
+        $ sumi(0, k) a_i (-1)^i cong(11) n cong(11) 0 $
+
+        Entonces $11|sumi(0, k) a_i (-1)^i$
+
+      ][
+        "$<==$" $quad 11|sumi(0, k)(-1)^i a_i ==> 11|n$
+
+        Si $11|sumi(0, k) a_i (-1)^i$, entonces $sumi(0, k) a_i (-1)^i cong(11) 0$
+
+        Por lo anterior tenemos que
+        $ n cong(11) sumi(0, k) a_i (-1)^i cong(11) 0 $
+
+        Entonces $11|n$
+      ]
+    ]
   ],
   enum.item(2)[
     A partir de la relación $10^3 cong(7) -1$, deducir un criterio de Divisibilidad por $7$.
   ],
   enum.item(3)[
     Probar que $6|n$ si y solo si $2|n$ y $3|n$.
+
+    #proof[
+      #list[
+        "$==>$" $quad 6|n ==> 2|n and 3|n$
+
+        Como $6|n$, entonces $n=6k$, con $k in ZZ$, luego $n=(2)(3)k$, por tanto $2|n$ y $3|n$
+      ][
+        "$<==$" $quad 2|n and 3|n ==> 6|n$
+
+        Como $2|n$ y $3|n$, luego $n=2a=3b$, con $a,b in ZZ$
+
+        Entonces $2a=3b$, por tanto $3b$ debe ser par, por tanto $b=2k$, con $k in ZZ$
+
+        Luego $n=2a=3(2k)=6k$, por tanto $6|n$
+      ]
+    ]
   ],
   enum.item(4)[
     Con las notaciones del ejercicio 1, probar que $8|n$ si y solo si $8|(100 a_2 + 10 a_1 + a_0)$
+
+    #proof[
+      Sea $n=a_0 + a_1 10 + a_2 10^2 + a_3 10^3 + dots + a_k 10^k=sumi(0, k) a_i 10^i$
+
+      #list[
+        "$==>$" $quad 8|n ==> 8|(a_0 + a_1 10 + a_2 10^2)$
+
+        Extraemos los $3$ primeros términos y factorizamos $10^3$
+        $
+          n & = a_0+a_1 10 + a_2 10^2 + sumi(3, k) a_i 10^i                 \
+            & = a_0+a_1 10 + a_2 10^2 + sumi(0, k-3) a_(i+3) 10^(i+3)       \
+            & = a_0+a_1 10 + a_2 10^2 + sumi(0, k-3) a_(i+3) 10^i 10^3      \
+            & = (a_0+a_1 10 + a_2 10^2) + (10^3 sumi(0, k-3) a_(i+3) 10^i ) \
+        $
+        Por hipótesis $8|n$, entonces $n cong(8) 0$
+
+        Luego $10^3=1000$ y $8|1000$, entonces $10^3 cong(8) 0$, por tanto
+        $10^3 sumi(0, k-3) cong(8) 0$
+
+        Como $n cong(8) n$, remplazando
+        $
+          n & cong(8)
+              (a_0+a_1 10 + a_2 10^2) + (10^3 sumi(0, k-3) a_(i+3) 10^i ) \
+            & cong(8) (a_0+a_1 10 + a_2 10^2) + 0                         \
+            & cong(8) a_0+a_1 10 + a_2 10^2                               \
+        $
+        Por definición $8|(a_0+a_1 10+ a_2 10^2 - n)$, y como $8|n$, entonces
+        $ 8|(a_0 + a_1 10 + a_2 10^2) $
+      ][
+        "$<==$" $quad 8|(a_0+a_1 10+a_2 10^2) ==> 8|n$
+
+        Por hipótesis $8|(a_0+a_1 10+a_2 10^2)$
+
+        Sabemos que
+        $ n=a_0+a_1 10+a_2 10^2 + 10^3 sumi(0, k-3) a_(i+3) 10^i $
+
+        Y que $8|10^3 sumi(0, k-3) a_(i+3) 10^i$, luego
+        $
+          8 & | (a_0+a_1 10+a_2 10^2) + (10^3 sumi(0, k-3) a_(i+3) 10^i)
+        $
+        Por lo tanto $8|n$
+      ]
+    ]
   ],
   enum.item(5)[
     Expresando los enteros positivos en el sistema de numeración con base $100$, deducir un criterio de divisibilidad por $101$.
