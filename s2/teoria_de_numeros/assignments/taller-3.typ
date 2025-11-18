@@ -32,7 +32,7 @@
     bg-raw: rgb("#2A2A37"),
   ),
 )
-#let color = theme.dark
+#let color = theme.light
 
 /// Configuration
 
@@ -125,8 +125,7 @@
     pad(left: 1em, top: -0.25em, bottom: 0.5em, {
       body
       if qed {
-        h(1fr)
-        box(square(size: 0.5em, radius: 1pt))
+        place(dx: 100% + 2pt, box(square(size: 0.5em, radius: 1pt)))
       }
     })
   })
@@ -376,6 +375,7 @@
     Probar que $3^105 + 4^105 cong(13) 0$
     #proof[
       Supongamos que $3^105 + 4^105 cong(13) 0$, entonces
+      #show math.equation: set block(breakable: true)
       $
                3^105 & cong(13) - 4^105              \
                3^105 & cong(13) 4^(2+52+1) (-1)      \
