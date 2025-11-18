@@ -355,8 +355,6 @@
   ],
 )
 
-
-
 #counter(heading).update(3)
 = Congruencias
 == Definición y Propiedades Básicas
@@ -511,11 +509,9 @@
   ],
 )
 
-
-
 == Criterios de Divisibilidad
 
-*Ejercicios:* // TODO: 2,4,5
+*Ejercicios:* // TODO: 2,5
 
 #enum(
   enum.item(1)[
@@ -560,6 +556,7 @@
   ],
   enum.item(2)[
     A partir de la relación $10^3 cong(7) -1$, deducir un criterio de Divisibilidad por $7$.
+
   ],
   enum.item(3)[
     Probar que $6|n$ si y solo si $2|n$ y $3|n$.
