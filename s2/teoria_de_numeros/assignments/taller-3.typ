@@ -147,7 +147,6 @@
 #let prodj(j, n) = $product_(j=#j)^(#n)$
 
 /// Content
-
 // Title
 #align(center + top, {
   v(25%)
@@ -165,7 +164,6 @@
 #pagebreak()
 
 // Content
-
 #counter(heading).update(1)
 = Divisibilidad
 #counter(heading).update((2, 4))
@@ -174,7 +172,6 @@
 *Ejercicios:*
 
 #enum(
-  indent: -6pt,
   enum.item(3)[
     Probar que $(a,b)=(a+b,[a,b])$
     #proof[
@@ -360,7 +357,6 @@
 *Ejercicios:*
 
 #enum(
-  indent: -7pt,
   enum.item(2)[
     Probar que si $a c cong(c n) b c$ entonces $a cong(n) b$
     #proof[
@@ -510,7 +506,7 @@
 
 == Criterios de Divisibilidad
 
-*Ejercicios:* // TODO: 2,5
+*Ejercicios:* // TODO: 5
 
 #enum(
   enum.item(1)[
@@ -556,6 +552,27 @@
   enum.item(2)[
     A partir de la relación $10^3 cong(7) -1$, deducir un criterio de Divisibilidad por $7$.
 
+    #solve[
+      Expresamos $n$ en cifras de $3$ en $3$
+
+      $
+        n = a_0 + a_1 10^3 + a_2 10^6 + dots + a_m 10^(3m) = sumi(0, m)a_i 10^(3i), quad a_i in {0,1,2,dots,999}
+      $
+
+      Como $10^3 cong(7) -1$, para todo $i in ZZ^*$ se tiene $(10^3)^i cong(7) (-1)^i$, luego para todo $a_i in ZZ$ se tiene $a_i 10^(3i) cong(7) a_i (-1)^i$, sumando los términos desde $i=0$ hasta $m$ tenemos que
+      $ sumi(0, m) a_i 10^(3i) & cong(7) sumi(0, m) a_i (-1)^i $
+      Luego $n=sumi(0, m) a_i 10^(3i)$, y sea $S=sumi(0, m)a_i (-1)^i$, remplazando $n cong(7) S$
+
+      #list[
+        Supongamos $7|n$, por definición $n cong(7) 0$, luego $S cong(0) 0$, entonces $7|S$
+      ][
+        Supongamos $7|S$, por definición $S cong(7) 0$, luego $n cong(0) 0$, entonces $7|n$
+      ]
+      Por lo tanto $7|n <==> 7|S$, concluyendo
+      $
+        7|n & <==> 7|sumi(0, m)a_i (-1)^i
+      $
+    ]
   ],
   enum.item(3)[
     Probar que $6|n$ si y solo si $2|n$ y $3|n$.
