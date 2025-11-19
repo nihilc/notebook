@@ -282,10 +282,6 @@
       $
         a=24dot 4=96 quad "y" quad b=24dot 5=120,
       $
-
-      #quote(block: true)[
-        "Como la suma y multiplicación son conmutativas, así como el MCD y MCM, también se da el caso de $a=120$ y $b=96$"
-      ]
     ]
   ],
   enum.item(11)[
@@ -307,7 +303,7 @@
       Descomponemos $24$ y $1440$
       #set math.mat(delim: none, augment: 1)
       $
-        mat(24, 2; 12, 2; 6, 2; 3, 3; 1) quad
+        mat(24, 2; 12, 2; 6, 2; 3, 3; 1) quad quad
         mat(1440, 2; 720, 2; 360, 2; 180, 2; 90, 2; 45, 3; 15, 3; 5, 5; 1) quad quad
         mat(
           augment: #none,
@@ -341,10 +337,9 @@
         $(5,3)$, $(2,1)$, $(0,1)$, $a=2^5 3^2 5^0=288$, $b=2^3 3^1 5^1=120$,
         $(5,3)$, $(2,1)$, $(1,0)$, $a=2^5 3^2 5^1=1440$, $b=2^3 3^1 5^0=24$,
       )
-      Por lo tanto las parejas $a,b$ tal que $(a,b)=24$ y $[a,b]=1440$ son
+      Como $(a,b)=(b,a)$ y $[a,b]=[b,a]$ reduciendo los duplicados tenemos que las parejas $a,b$ tal que $(a,b)=24$ y $[a,b]=1440$ son
       $
-        { (24,1440), (120,288), (72,480), (360,96),
-          (96,360), (480,72), (288,120), (1440,24) }
+        { (24,1440), (120,288), (72,480), (360,96) }
       $
     ]
   ],
@@ -370,22 +365,34 @@
   enum.item(4)[
     Probar que $3^105 + 4^105 cong(13) 0$
     #proof[
-      Supongamos que $3^105 + 4^105 cong(13) 0$, entonces
-      #show math.equation: set block(breakable: true)
+      Verificamos $3^105$ y $4^105$ modulo $13$
+
+      $3^105 cong(13) 3^(3 dot 35) cong(13) 27^35 cong(13) 1^35 cong(13) 1$
+
+      $4^105 cong(13) 4^(2 dot 52+1) cong(13) 16^52 (4) cong(13) 3^(3*17+1)(4) cong(13) 27^17 (3)(4) cong(13) 1^17 (12) cong(13) -1$
+
+      Luego sumando las congruencias
       $
-               3^105 & cong(13) - 4^105              \
-               3^105 & cong(13) 4^(2+52+1) (-1)      \
-               3^105 & cong(13) 16^52 dot (4)(-1)    \
-               3^105 & cong(13) 16^52 (-4)           \
-               3^105 & cong(13) 3^52 (-4)            \
-        3^(3 dot 35) & cong(13) 3^(3 dot 17 +1) (-4) \
-               27^35 & cong(13) 27^17 (3) (-4)       \
-                1^35 & cong(13) 1^17 (3) (-4)        \
-                   1 & cong(13) -12                  \
-                   1 & cong(13) 1                    \
+        3^105 + 4^105 cong(13) 1+(-1) cong(13) 0
       $
-      Como $1 cong(13) 1$, entonces la suposición es correcta
     ]
+    // #proof[
+    //   Supongamos que $3^105 + 4^105 cong(13) 0$, entonces
+    //   #show math.equation: set block(breakable: true)
+    //   $
+    //            3^105 & cong(13) - 4^105              \
+    //            3^105 & cong(13) 4^(2+52+1) (-1)      \
+    //            3^105 & cong(13) 16^52 dot (4)(-1)    \
+    //            3^105 & cong(13) 16^52 (-4)           \
+    //            3^105 & cong(13) 3^52 (-4)            \
+    //     3^(3 dot 35) & cong(13) 3^(3 dot 17 +1) (-4) \
+    //            27^35 & cong(13) 27^17 (3) (-4)       \
+    //             1^35 & cong(13) 1^17 (3) (-4)        \
+    //                1 & cong(13) -12                  \
+    //                1 & cong(13) 1                    \
+    //   $
+    //   Como $1 cong(13) 1$, entonces la suposición es correcta
+    // ]
   ],
   enum.item(6)[
     Si $p$ es un primo impar probar que:
@@ -430,9 +437,9 @@
         $
           sumi(1, p-1) i^3 = (frac((p-1)p, 2))^2=(S_1)^2
         $
-        De (a) tenemos que $S_1 cong(p) 0$, por tanto
+        De (a) tenemos que $S_1 cong(p) 0$, luego $(S_1)^2 cong(p) 0$, y como $(S_1)^2=S_3$
         $
-          (S_1)^2 = S_3 & cong(p) 0
+          S_3 & cong(p) 0
         $
       ]
     ]
@@ -493,9 +500,7 @@
         )
         Luego sumamos las congruencias
         $
-          (5)(7)^29 + (8)(9)^72 & cong(10) 5 + 8 \
-                                & cong(10) 13    \
-                                & cong(10) 3     \
+          (5)(7)^29 + (8)(9)^72 cong(10) 5 + 8 cong(10) 13 cong(10) 3
         $
 
         Por tanto el ultimo dígito de $(5)(7)^29 + (8)(9)^72$ es $3$
@@ -513,27 +518,22 @@
     Sea $n=a_0+a_1 10 + a_2 10^2 + dots + a_k 10^k$ la representación decimal del entero positivo $n$. Probar que $n$ es divisible por $11$, si y solo si $sum_(i=0)^k (-1)^i a_i$ es divisible por 11
 
     #proof[
-      Sea $n=sumi(0, k) a_i 10^i$
+      Sea $n=sumi(0, k) a_i 10^i, quad a in {0,1,dots,9}$
 
-      Vemos que $10 cong(11) -1$
+      Como $10 cong(11) -1$, luego para todo $i in ZZ^*$ se tiene que $10^i cong(11) (-1)^i$, ademas para todo $a_i in {0,1,dots,9}$ se tiene que $a_i 10^i cong(11) a_i (-1)^i$
 
-      Para todo $i in ZZ^*$ se tiene que $10^i cong(11) (-1)^i$
-
-      Para todo $a_i in ZZ$ se tiene que $a_i 10^i cong(11) a_i (-1)^i$
-
-      Luego la suma de todos los elementos $a_i 10^i$ va a ser congruente modulo $11$ de la suma de todos los elementos $a_i (-1)^i$ de $i=0,1,dots,k$
-      $ sumi(0, k) a_i 10^i cong(11) sumi(0, k) a_i (-1)^i $
-
-      Luego $n=sumi(0, k)a_i 10^i$, por tanto
-      $ n cong(11) sumi(0, k) a_i (-1)^i $
+      Luego la suma de todos los elementos $a_i 10^i$ va a ser congruente modulo $11$ con la suma de todos los elementos $a_i (-1)^i$ de $i=0,1,dots,k$
+      $
+        sumi(0, k) a_i 10^i & cong(11) sumi(0, k) a_i (-1)^i \
+                          n & cong(11) sumi(0, k) a_i (-1)^i \
+      $
 
       #list[
         "$==>$" $quad 11|n ==> 11|sumi(0, k)(-1)^i a_i$
 
         Si $11|n$, entonces $n cong(11) 0$
 
-        Por lo anterior tenemos que
-        $ sumi(0, k) a_i (-1)^i cong(11) n cong(11) 0 $
+        Por lo anterior tenemos que $n cong(11) sumi(0, k) a_i (-1)^i cong(11) 0$
 
         Entonces $11|sumi(0, k) a_i (-1)^i$
 
@@ -542,8 +542,7 @@
 
         Si $11|sumi(0, k) a_i (-1)^i$, entonces $sumi(0, k) a_i (-1)^i cong(11) 0$
 
-        Por lo anterior tenemos que
-        $ n cong(11) sumi(0, k) a_i (-1)^i cong(11) 0 $
+        Por lo anterior tenemos que $sumi(0, k) a_i (-1)^i cong(11) n cong(11) 0$
 
         Entonces $11|n$
       ]
@@ -553,20 +552,20 @@
     A partir de la relación $10^3 cong(7) -1$, deducir un criterio de Divisibilidad por $7$.
 
     #solve[
-      Expresamos $n$ en cifras de $3$ en $3$
+      Expresamos $n$ en bloques de $3$, osea $n=underbrace(b_m b_(m-1) b_(m-2), a_m) dots underbrace(b_5 b_4 b_3, a_1) underbrace(b_2 b_1 b_0, a_0)$
 
       $
         n = a_0 + a_1 10^3 + a_2 10^6 + dots + a_m 10^(3m) = sumi(0, m)a_i 10^(3i), quad a_i in {0,1,2,dots,999}
       $
 
-      Como $10^3 cong(7) -1$, para todo $i in ZZ^*$ se tiene $(10^3)^i cong(7) (-1)^i$, luego para todo $a_i in ZZ$ se tiene $a_i 10^(3i) cong(7) a_i (-1)^i$, sumando los términos desde $i=0$ hasta $m$ tenemos que
+      Como $10^3 cong(7) -1$, para todo $i in ZZ^*$ se tiene $(10^3)^i cong(7) (-1)^i$, luego para todo $a_i in {0,1,dots,999}$ se tiene $a_i 10^(3i) cong(7) a_i (-1)^i$, sumando los términos desde $i=0$ hasta $m$ tenemos que
       $ sumi(0, m) a_i 10^(3i) & cong(7) sumi(0, m) a_i (-1)^i $
       Luego $n=sumi(0, m) a_i 10^(3i)$, y sea $S=sumi(0, m)a_i (-1)^i$, remplazando $n cong(7) S$
 
       #list[
-        Supongamos $7|n$, por definición $n cong(7) 0$, luego $S cong(0) 0$, entonces $7|S$
+        Supongamos $7|n$, por definición $n cong(7) 0$, luego $S cong(7) 0$, entonces $7|S$
       ][
-        Supongamos $7|S$, por definición $S cong(7) 0$, luego $n cong(0) 0$, entonces $7|n$
+        Supongamos $7|S$, por definición $S cong(7) 0$, luego $n cong(7) 0$, entonces $7|n$
       ]
       Por lo tanto $7|n <==> 7|S$, concluyendo
       $
@@ -587,14 +586,15 @@
 
         Como $2|n$ y $3|n$, luego $n=2a=3b$, con $a,b in ZZ$
 
-        Entonces $2a=3b$, por tanto $3b$ debe ser par, por tanto $b=2k$, con $k in ZZ$
+        Entonces $2a=3b$, luego $3b$ debe ser par entonces $b$ es par, sea $b=2k$
 
-        Luego $n=2a=3(2k)=6k$, por tanto $6|n$
+        Luego $n=2a=3(2k)=6k$. Por tanto $6|n$
       ]
     ]
   ],
   enum.item(4)[
-    Con las notaciones del ejercicio 1, probar que $8|n$ si y solo si $8|(100 a_2 + 10 a_1 + a_0)$
+    Con las notaciones del ejercicio 1,
+    probar que $8|n$ si y solo si $8|(100 a_2 + 10 a_1 + a_0)$
 
     #proof[
       Sea $n=a_0 + a_1 10 + a_2 10^2 + a_3 10^3 + dots + a_k 10^k=sumi(0, k) a_i 10^i$
@@ -607,22 +607,16 @@
           n & = a_0+a_1 10 + a_2 10^2 + sumi(3, k) a_i 10^i                 \
             & = a_0+a_1 10 + a_2 10^2 + sumi(0, k-3) a_(i+3) 10^(i+3)       \
             & = a_0+a_1 10 + a_2 10^2 + sumi(0, k-3) a_(i+3) 10^i 10^3      \
-            & = (a_0+a_1 10 + a_2 10^2) + (10^3 sumi(0, k-3) a_(i+3) 10^i ) \
+            & = (a_0+a_1 10 + a_2 10^2) + 10^3 (sumi(0, k-3) a_(i+3) 10^i ) \
         $
-        Por hipótesis $8|n$, entonces $n cong(8) 0$
+        Sean $S=a_0+a_1 10+a_2 10^2$ y $M=sumi(0, k-3) a_(i+3) 10^i$
 
-        Luego $10^3=1000$ y $8|1000$, entonces $10^3 cong(8) 0$, por tanto
-        $10^3 sumi(0, k-3) cong(8) 0$
+        Luego $n=S+10^3 M$
 
-        Como $n cong(8) n$, remplazando
-        $
-          n & cong(8)
-              (a_0+a_1 10 + a_2 10^2) + (10^3 sumi(0, k-3) a_(i+3) 10^i ) \
-            & cong(8) (a_0+a_1 10 + a_2 10^2) + 0                         \
-            & cong(8) a_0+a_1 10 + a_2 10^2                               \
-        $
-        Por definición $8|(a_0+a_1 10+ a_2 10^2 - n)$, y como $8|n$, entonces
-        $ 8|(a_0 + a_1 10 + a_2 10^2) $
+        Por hipótesis $8|(S+10^3M)$, Ademas como $8|10^3$, entonces $8|10^3M$
+
+        Por lo tanto $8|S$, remplazando
+        $ 8|(a_0+a_1 10 + a_2 10^2) $
       ][
         "$<==$" $quad 8|(a_0+a_1 10+a_2 10^2) ==> 8|n$
 
@@ -641,5 +635,20 @@
   ],
   enum.item(5)[
     Expresando los enteros positivos en el sistema de numeración con base $100$, deducir un criterio de divisibilidad por $101$.
+
+    #solve[
+      Expresamos a $n$ en bloques de $2$, osea $n=underbrace(b_m b_(m-1), a_m) dots underbrace(b_3 b_2, a_1) underbrace(b_1 b_0, a_0)$, luego
+      $
+        n=a_0 + a_1 10^2 + a_2 10^4 + dots + a_m 10^(2m) = sumi(0, m) a_i 10^(2i), quad a_i in {0,1,2,dots,99}
+      $
+      Sabemos que $10^2 cong(101) -1$, luego para todo $i in ZZ^*$, se tiene $(10^2)^i cong(101) (-1)^i$ y para todo $a_i in ZZ$ tenemos $a_i 10^(2i) cong(101) a_i (-1)^i$, sumando los términos desde $i=0$ hasta $m$ tenemos que
+      $ sumi(0, m) a_i 10^(2i) cong(101) sumi(0, m) a_i (-1)^i $
+
+      Luego $n=sumi(0, m) a_i 10^(2i)$ y sea $S=sumi(0, m) a_i (-1)^i$, remplazando $n cong(101) S$
+
+      - Supongamos $101|n$, por definición $n cong(101) 0$, luego $S cong(101) 0$, entonces $101|S$
+      - Supongamos $101|S$, por definición $S cong(101) 0$, luego $n cong(101) 0$, entonces $101|n$
+      Concluyendo $101|n <==> 101|S$
+    ]
   ],
 )
