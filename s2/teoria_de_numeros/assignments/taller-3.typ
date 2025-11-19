@@ -8,7 +8,7 @@
   author: (
     (name: "Christian Mauricio Cardenas Baron", id: "20251167009"),
   ),
-  date: datetime(year: 2025, month: 11, day: 6),
+  date: datetime(year: 2025, month: 11, day: 20),
   course: "Teoría de Números",
   professor: "Carlos Andres Giraldo Hernandez",
   faculty: "Facultad de Ciencias Matemáticas y Naturales",
